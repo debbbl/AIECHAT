@@ -1,5 +1,5 @@
 async function sendMessage() {
-    const userInput = document.getElementById('userInput').value;
+    const userInput = document.getElementById('userInput').value.trim();
     if (!userInput) return;
 
     // Display user message
@@ -29,7 +29,8 @@ async function sendMessage() {
     });
 
     // Clear input
-    document.getElementById('userInput').value = '';
+    const inputField = document.getElementById('userInput');
+    inputField.value = '';
     document.getElementById('sendButton').classList.remove('active');
     messages.scrollTop = messages.scrollHeight;
 }
@@ -46,9 +47,9 @@ document.getElementById('userInput').addEventListener('keydown', function(event)
 
 // Adjust send button opacity based on input
 document.getElementById('userInput').addEventListener('input', function() {
-    const userInput = document.getElementById('userInput').value;
+    const userInput = document.getElementById('userInput').value.trim();
     const sendButton = document.getElementById('sendButton');
-    if (userInput.trim().length > 0) {
+    if (userInput.length > 0) {
         sendButton.classList.add('active');
     } else {
         sendButton.classList.remove('active');
