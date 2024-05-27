@@ -1,0 +1,217 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #E0E7FF;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Center align horizontally */
+    padding: 0 20px; /* Create gap on left and right */
+    transition: margin-left 0.3s ease-in-out; /* Animation for main content shift */
+}
+
+.chatbox {
+    width: 100%;
+    max-width: 900px; /* Limit chatbox width */
+    border: 2px solid #1A1F4A; /* Updated to the new primary color */
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 50px); /* Full viewport height minus the gap */
+    margin: 10px 0; /* Gap at the top and bottom */
+    position: relative;
+}
+
+.chatbox.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.faq-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.faq-button {
+    flex: 1 1 calc(50% - 10px); /* Four buttons in a 2x2 grid with 10px gap */
+    padding: 10px;
+    background-color: #fafafa;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.faq-button:hover {
+    background-color: #d3d3d3; /* Darker shade on hover */
+}
+
+.chatbox::after {
+    content: ''; /* Add content for pseudo-element */
+    position: absolute; /* Position the pseudo-element */
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(5%);
+    background-image: url('../images/bot-profile.png'); /* Set the background image */
+    opacity: 0.08; /* Adjust opacity to make it appear as a watermark */
+    pointer-events: none; /* Ensure the pseudo-element doesn't interfere with mouse events */
+}
+
+.chatbox-header {
+    background-color: #1A1F4A; /* Updated to the new primary color */
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+.chatbox-body {
+    padding: 10px 10px; /* Add padding for gap */
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+
+.messages p {
+    margin: 0;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+    animation: fadeIn 0.5s ease-in-out; /* Animation for bot's response */
+}
+
+.message img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.message .content {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.message.user {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.messages .bot {
+    background: #ececec;
+    text-align: left;
+}
+
+.message.user .content {
+    background-color: #1A1F4A; /* Updated to the new primary color */
+    color: white;
+}
+
+.message.bot .content {
+    align-self: flex-start;
+}
+
+.message.bot img {
+    width: 45px; /* Increase width to 45px */
+    height: 45px; /* Increase height to 45px */
+}
+
+.chatbox-footer textarea {
+    flex: 1; /* Expand textarea to fill remaining space */
+    height: 50px; /* Fixed height for textarea */
+    max-height: 100px; /* Maximum height for scroll */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    border: none;
+    border-bottom-left-radius: 10px;
+    resize: none;
+    outline: none; /* Remove outline */
+}
+
+.chatbox-footer button {
+    background-color: #1A1F4A; /* Updated to the new primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+}
+
+.chatbox-footer button:hover {
+    background-color: #0f1530; /* Darker shade of the primary color */
+}
+
+.send-button {
+    background-color: #1A1F4A; /* Background color */
+    border: none;
+    cursor: pointer;
+    width: 40px; /* Set width and height for a circular button */
+    height: 40px;
+    border-radius: 50%; /* Make it circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.4; /* Set initial opacity */
+    transition: opacity 0.3s ease-in-out; /* Transition for opacity */
+    margin-right: 22px; /* Leave a gap of 15px from the right */
+    margin-top: auto; /* Align vertically in the middle */
+    margin-bottom: auto; /* Align vertically in the middle */
+    padding: 0; /* Remove any padding */
+}
+
+
+.send-button img {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    filter: invert(1); /* Invert icon color to white */
+}
+
+.send-button:hover {
+    opacity: 0.6; /* Increase opacity on hover */
+}
+
+.send-button.active {
+    opacity: 1; /* Set full opacity when active */
+}
