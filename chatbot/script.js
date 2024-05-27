@@ -24,12 +24,13 @@ async function sendMessage() {
     data.forEach((msg) => {
         const botMessage = document.createElement('div');
         botMessage.classList.add('message', 'bot');
-        botMessage.innerHTML = `<img src="../images/bot-profile.png" alt="Bot"><div class="content">${msg.text}</div>`;
+        botMessage.innerHTML = `<img src="images/bot-profile.png" alt="Bot"><div class="content">${msg.text}</div>`;
         messages.appendChild(botMessage);
     });
 
     // Clear input
     document.getElementById('userInput').value = '';
+    document.getElementById('sendButton').classList.remove('active');
     messages.scrollTop = messages.scrollHeight;
 }
 
@@ -40,5 +41,16 @@ document.getElementById('userInput').addEventListener('keydown', function(event)
     if (event.key === 'Enter') {
         event.preventDefault();
         document.getElementById('sendButton').click();
+    }
+});
+
+// Adjust send button opacity based on input
+document.getElementById('userInput').addEventListener('input', function() {
+    const userInput = document.getElementById('userInput').value;
+    const sendButton = document.getElementById('sendButton');
+    if (userInput.trim().length > 0) {
+        sendButton.classList.add('active');
+    } else {
+        sendButton.classList.remove('active');
     }
 });
