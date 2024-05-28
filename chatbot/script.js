@@ -28,20 +28,28 @@ async function sendMessage() {
         messages.appendChild(botMessage);
     });
 
-    // Clear input
-    const inputField = document.getElementById('userInput');
-    inputField.value = '';
+    // Clear input and disable send button
+    document.getElementById('userInput').value = '';
     document.getElementById('sendButton').classList.remove('active');
-    messages.scrollTop = messages.scrollHeight;
+
+    // Scroll to the bottom of the messages
+    const messagesContainer = document.querySelector('.messages');
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-document.getElementById('sendButton').addEventListener('click', sendMessage);
+document.getElementById('sendButton').addEventListener('click', () => {
+    sendMessage();
+    document.getElementById('userInput').value = ''; // Clear the input field
+    document.getElementById('sendButton').classList.remove('active'); // Disable the send button
+});
 
 // Enable sending message on pressing Enter key
 document.getElementById('userInput').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
-        document.getElementById('sendButton').click();
+        sendMessage();
+        document.getElementById('userInput').value = ''; // Clear the input field
+        document.getElementById('sendButton').classList.remove('active'); // Disable the send button
     }
 });
 
