@@ -152,12 +152,9 @@ html, body {
 
 .chatbox-footer {
     display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    align-items: center; /* Align items vertically */
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
 }
 
 .chatbox-footer textarea {
@@ -173,22 +170,10 @@ html, body {
 }
 
 .chatbox-footer button {
-    background-color: #1A1F4A;
     border: none;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
+    padding: 10px 20px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.4;
-    transition: opacity 0.3s ease-in-out;
-    margin-left: 10px; /* Adjust spacing between textarea and button */
-}
-
-.chatbox-footer button:hover {
-    background-color: #0f1530; /* Darker shade of the primary color */
+    cursor: pointer;
 }
 
 .send-button {
@@ -203,7 +188,7 @@ html, body {
     align-items: center;
     opacity: 0.4; /* Set initial opacity */
     transition: opacity 0.3s ease-in-out; /* Transition for opacity */
-    margin-right: 0; /* Remove margin to align button properly */
+    margin-right: 10px; /* Remove margin to align button properly */
     margin-left: 10px; /* Space between the textarea and button */
     margin-top: auto; /* Align vertically in the middle */
     margin-bottom: auto; /* Align vertically in the middle */
