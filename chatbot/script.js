@@ -33,8 +33,7 @@ async function sendMessage() {
     document.getElementById('sendButton').classList.remove('active');
 
     // Scroll to the bottom of the messages
-    const messagesContainer = document.querySelector('.messages');
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    messages.scrollTop = messages.scrollHeight;
 }
 
 document.getElementById('sendButton').addEventListener('click', () => {
