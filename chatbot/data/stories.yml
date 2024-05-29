@@ -2,6 +2,11 @@ version: "3.1"
 
 stories:
 
+- story: User starts conversation
+  steps:
+  - intent: greet
+  - action: utter_greet
+
 - story: happy path
   steps:
   - intent: greet
@@ -28,3 +33,23 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: User asks about AIESEC
+  steps:
+  - intent: faq_about_aiesec
+  - action: action_answer_question
+
+- story: User asks how to apply
+  steps:
+  - intent: faq_how_to_apply
+  - action: action_answer_question
+
+- story: Answer FAQ about applying for volunteering
+  steps:
+  - intent: faq_apply_volunteering
+  - action: action_answer_question
+
+- story: Answer FAQ about Global Volunteer requirements
+  steps:
+  - intent: program_details
+  - action: action_answer_question

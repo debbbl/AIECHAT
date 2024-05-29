@@ -21,7 +21,7 @@ nlu:
   examples: |
     - cu
     - good by
-    - cee you later
+    - see you later
     - good night
     - bye
     - goodbye
@@ -79,7 +79,7 @@ nlu:
     - unhappy
     - not good
     - not very good
-    - extremly sad
+    - extremely sad
     - so saad
     - so sad
 
@@ -89,3 +89,24 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: faq_about_aiesec
+  examples: |
+    - What is AIESEC?
+    - Tell me about AIESEC.
+    - What does AIESEC do?
+
+- intent: faq_how_to_apply
+  examples: |
+    - How can I apply for a volunteering program?
+    - What's the process to apply for a program?
+
+- intent: faq_global_volunteer_requirements
+  examples: |
+    - What are the requirements for the Global Volunteer program?
+    - Can you tell me about the requirements for the Global Volunteer program?
+
+- intent: faq_apply_volunteering
+  examples: |
+    - How do I apply for a volunteering program?
+    - Can you guide me on how to apply for a volunteer p

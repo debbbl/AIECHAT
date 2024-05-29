@@ -8,8 +8,22 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - faq_about_aiesec
+  - faq_how_to_apply
+  - faq_global_volunteer_requirements
+  - faq_apply_volunteering
+  - program_details
+
+actions:
+  - action_welcome
+  - action_answer_question
+  - action_faq
+  - action_session_start
 
 responses:
+  utter_welcome:
+  - text: "Welcome to our AIESEC chatbot! How can I assist you today?"
+
   utter_greet:
   - text: "Hey! How are you?"
 
@@ -29,6 +43,16 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  utter_faq_about_aiesec:
+  - text: "AIESEC is a global platform for young people to explore and develop their leadership potential. It is a non-political, independent, not-for-profit organization run by students and recent graduates of institutions of higher education."
+
+  utter_faq_how_to_apply:
+  - text: "To apply for a volunteering program, visit our website, select a program that interests you, and follow the application instructions. You will need to create an account, fill in your details, and submit your application."
+
+  utter_faq_global_volunteer_requirements:
+  - text: "The requirements for the Global Volunteer program include being between 18-30 years old and having a good command of English. Some projects might have additional specific requirements."
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+  initial_action: action_session_start

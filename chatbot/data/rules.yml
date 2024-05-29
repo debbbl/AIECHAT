@@ -11,3 +11,23 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Respond to FAQ about AIESEC
+  steps:
+  - intent: faq_about_aiesec
+  - action: action_answer_question
+
+- rule: Respond to FAQ about how to apply
+  steps:
+  - intent: faq_how_to_apply
+  - action: action_answer_question
+
+- rule: Respond to FAQ about global volunteer recruitment
+  steps:
+  - intent: faq_global_volunteer_requirements
+  - action: action_answer_question
+
+- rule: Activate the welcome message at session start
+  steps:
+    - action: action_session_start
+    - action: action_welcome
