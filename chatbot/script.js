@@ -1,5 +1,5 @@
-async function sendMessage() {
-    const userInput = document.getElementById('userInput').value.trim();
+async function sendMessage(message = null) {
+    const userInput = message || document.getElementById('userInput').value.trim();
     if (!userInput) return;
 
     // Display user message
@@ -8,6 +8,9 @@ async function sendMessage() {
     userMessage.classList.add('message', 'user');
     userMessage.innerHTML = `<div class="content">${userInput}</div>`;
     messages.appendChild(userMessage);
+
+    // Hide FAQ buttons
+    document.getElementById('faqButtons').style.display = 'none';
 
     // Send user message to Rasa server
     const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
@@ -58,7 +61,18 @@ document.getElementById('userInput').addEventListener('input', function() {
     const sendButton = document.getElementById('sendButton');
     if (userInput.length > 0) {
         sendButton.classList.add('active');
+        sendButton.disabled = false;
     } else {
         sendButton.classList.remove('active');
+        sendButton.disabled = true;
     }
+});
+
+// FAQ button click handling
+const faqButtons = document.querySelectorAll(".faq-button");
+faqButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+        const message = event.target.textContent;
+        sendMessage(message);
+    });
 });
