@@ -19,7 +19,7 @@ nlu:
 
 - intent: goodbye
   examples: |
-    - cu
+    - ciao
     - good by
     - see you later
     - good night
@@ -110,3 +110,11 @@ nlu:
   examples: |
     - How do I apply for a volunteering program?
     - Can you guide me on how to apply for a volunteer p
+
+- intent: search_program
+  examples: |
+    - Can you suggest a program in [country](location)?
+    - I'm interested in volunteering during [time period](time).
+    - What programs do you have in [country](location) in [time period](time)?
+    
+  

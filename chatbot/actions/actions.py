@@ -30,6 +30,10 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, EventType
 import json
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import make_pipeline
+from fuzzywuzzy import process
 
 class ActionAnswerQuestion(Action):
     def name(self) -> Text:
@@ -37,7 +41,7 @@ class ActionAnswerQuestion(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         question = tracker.latest_message.get("text")
-        with open("global_volunteer.json", "r") as file:
+        with open("data/faq.json", "r") as file:
             data = json.load(file)
             # Search for FAQs
             for faq in data["faqs"]:

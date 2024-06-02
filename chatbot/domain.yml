@@ -12,7 +12,7 @@ intents:
   - faq_how_to_apply
   - faq_global_volunteer_requirements
   - faq_apply_volunteering
-  - program_details
+  - da
 
 actions:
   - action_welcome

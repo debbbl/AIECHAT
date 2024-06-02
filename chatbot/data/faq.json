@@ -1,0 +1,110 @@
+{
+  "faqs": [
+    {
+      "question": "What is AIESEC?",
+      "answer": "AIESEC is a global platform for young people to explore and develop their leadership potential. It is a non-political, independent, not-for-profit organization run by students and recent graduates of institutions of higher education."
+    },
+    {
+      "question": "How can I apply for a volunteering program?",
+      "answer": "To apply for a volunteering program, visit our website, select a program that interests you, and follow the application instructions. You will need to create an account, fill in your details, and submit your application."
+    },
+    {
+      "question": "What are the requirements for the Global Volunteer program?",
+      "answer": "The requirements for the Global Volunteer program include being between 18-30 years old and having a good command of English. Some projects might have additional specific requirements."
+    },
+    {
+      "question": "What is the duration of the Global Talent program?",
+      "answer": "The Global Talent program typically lasts between 6 to 12 weeks, depending on the specific project and destination."
+    },
+    {
+      "question": "How do I contact AIESEC support?",
+      "answer": "You can contact AIESEC support by emailing support@aiesec.org or calling our helpline at +1234567890."
+    }
+  ],
+  "programs": [
+    {
+      "program_name": "Green Leaders",
+      "objective": [
+        "Impact Sustainable Development Goal (SDG) #13 by educating communities about climate change and developing action plans to mitigate its effects.",
+        "Focus on improving education, raising awareness, and enhancing human and institutional capacity in climate change mitigation, adaptation, impact reduction, and early warning systems."
+      ],
+      "requirements": [
+        "Commitment to teaching and interacting with students.",
+        "Willingness to engage in cross-cultural exchange.",
+        "Interest in learning about and experiencing Thai culture.",
+        "Possess basic knowledge of English."
+      ],
+      "key_activities": [
+        "Teach English to students at assigned schools in rural areas.",
+        "Share useful knowledge with students in an understandable way.",
+        "Educate students and local Thais about the Sustainable Development Goals (SDGs) as part of English teaching.",
+        "Create interactive and engaging learning activities to enhance teaching classes and develop soft skills.",
+        "Explore Thai culture and ways of living, sharing these experiences with the international community."
+      ],
+      "country": "Sri Lanka",
+      "benefits": [
+        "Develop soft skills such as creativity, adaptability, and problem-solving.",
+        "Gain hands-on teaching experience in a unique setting.",
+        "Deepened understanding of Thai culture and rural lifestyles.",
+        "Development of a diverse skill set applicable in various fields.",
+        "Opportunity to contribute positively to the education of rural Thai students.",
+        "Memorable international volunteer experience."
+      ],
+      "duration_weeks": 12,
+      "timeline": "July to September",
+      "paid": false,
+      "meal": "Provided and covered (Food in weekday covered)",
+      "accommodation": true,
+      "program_faqs": [
+        {
+          "question": "Do I need to speak Thai to participate in the program?",
+          "answer": "While knowing Thai is not a requirement, basic knowledge of the language can be helpful for communication and navigating daily life in the community. However, English is often sufficient for teaching purposes."
+        },
+        {
+          "question": "Is previous teaching experience required?",
+          "answer": "No, previous teaching experience is not always required. However, a willingness to engage with students and a passion for teaching are essential."
+        }
+      ]
+    },
+    {
+      "program_name": "Global Classroom",
+      "objective": [
+        "Provide rural Thai students with exposure to English taught by foreign teachers.",
+        "Offer international volunteers memorable experiences and opportunities for cross-cultural exchange.",
+        "Develop volunteers' English teaching skills and a variety of other skills."
+      ],
+      "requirements": [
+        "Passion for environmental issues and climate change awareness.",
+        "Willingness to participate in physical activities such as tree planting and compost-making campaigns."
+      ],
+      "key_activities": [
+        "Interviews and discussions with business successors",
+        "Awareness campaigns on climatic changes.",
+        "Experiencing nature perseverance by tree planting campaigns.",
+        "Plant distribution and compost-making campaigns."
+      ],
+      "country": "Sri Lanka",
+      "benefits": [
+        "Increased knowledge and understanding of climate change issues through participation in awareness campaigns.",
+        "Enhanced communication and networking skills through conducting interviews and discussions with business successors.",
+        "Personal satisfaction from actively participating in initiatives aimed at addressing climate change and promoting environmental sustainability.",
+        "Skill development in plant distribution and compost-making, contributing to sustainable environmental practices."
+      ],
+      "duration_weeks": 4,
+      "timeline": " August to September",
+      "paid": false,
+      "meal": "1 meal per day provided",
+      "accommodation": true,
+      "program_faqs": [
+        {
+          "question": "What does the tree planting campaign entail?",
+          "answer": "The tree planting campaign involves planting trees in designated areas to promote environmental conservation, combat deforestation, and mitigate the effects of climate change."
+        },
+        {
+          "question": "What are the expected outcomes of participating in these activities?",
+          "answer": "Participating in these activities can lead to increased awareness of climate change issues, skill development in environmental conservation practices, and a sense of personal fulfillment from contributing to positive change in the community."
+        }
+      ]
+    }
+  ]
+}
