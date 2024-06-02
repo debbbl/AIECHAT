@@ -31,3 +31,30 @@ rules:
   steps:
     - action: action_session_start
     - action: action_welcome
+
+- rule: Ask for timeline if missing
+  condition:
+    - slot_was_set:
+        - country
+    - slot_was_set:
+        - timeline: null
+  steps:
+    - action: action_ask_timeline
+
+- rule: Ask for country if missing
+  condition:
+    - slot_was_set:
+        - timeline
+    - slot_was_set:
+        - country: null
+  steps:
+    - action: action_ask_country
+
+- rule: Respond to complete information
+  condition:
+    - slot_was_set:
+        - country
+    - slot_was_set:
+        - timeline
+  steps:
+    - action: action_search_programs

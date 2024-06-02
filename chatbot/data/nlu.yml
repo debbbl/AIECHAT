@@ -111,10 +111,63 @@ nlu:
     - How do I apply for a volunteering program?
     - Can you guide me on how to apply for a volunteer p
 
-- intent: search_program
+- intent: inform_country
   examples: |
-    - Can you suggest a program in [country](location)?
-    - I'm interested in volunteering during [time period](time).
-    - What programs do you have in [country](location) in [time period](time)?
+    - I want to volunteer in [Thailand](country)
+    - Do you have programs in [Cambodia](country)?
+    - Any volunteer opportunities in [Vietnam](country)?
+
+- intent: inform_timeline
+  examples: |
+    - I'm available from [July](timeline) to [September](timeline)
+    - What programs are available from [August](timeline) to [September](timeline)?
+    - Show me programs for [September](timeline)
+    - I can volunteer from [July](timeline) to [August](timeline)
+    - How about programs in [August](timeline)?
+
+- intent: inform_interests
+  examples: |
+    - I'm interested in [Teaching](interests)
+    - I want to do [Cultural Exchange](interests) activities
+    - Any programs with [Environmental Conservation](interests)?
+
+- intent: inform_benefits
+  examples: |
+    - What benefits are provided?
+    - Are accommodations covered?
+    - Do you offer any benefits for volunteers?
+
+- intent: inform_skills
+  examples: |
+    - What skills are required?
+    - Are there specific skills needed?
+    - Do I need any prior experience or skills?
+
+- intent: inform_accommodation
+  examples: |
+    - Is accommodation provided?
+    - What are the accommodation arrangements?
+    - Do volunteers stay with host families?
+
+- intent: inform_meal
+  examples: |
+    - Are meals provided?
+    - What meal arrangements are available?
+    - Do volunteers need to cook their own meals?
+
+- intent: inform_country_and_timeline
+  examples: |
+    - I want to volunteer in [Thailand](country) from [July](timeline) to [September](timeline)
+    - What programs are available in [Cambodia](country) in [August](timeline)?
+    - Any volunteer opportunities in [Vietnam](country) from [July](timeline)?
+
+- lookup: country
+  examples: |
+    - data/countries.txt
+
+- regex: country
+  examples: |
+    - \b(Thailand|Cambodia|Vietnam|Taiwan|Sri Lanka|...)\b
+
     
   

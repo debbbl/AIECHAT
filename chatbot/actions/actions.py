@@ -1,18 +1,7 @@
 # This files contains your custom actions which can be used to run
 # custom Python code.
 #
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
 
-
-# This is a simple example for a custom action which utters "Hello World!"
-
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
 # class ActionHelloWorld(Action):
 #
 #     def name(self) -> Text:
@@ -34,6 +23,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import make_pipeline
 from fuzzywuzzy import process
+
 
 class ActionAnswerQuestion(Action):
     def name(self) -> Text:
@@ -87,3 +77,84 @@ class ActionSessionStart(Action):
 
         return events
 
+
+class ActionSearchPrograms(Action):
+    def name(self) -> Text:
+        return "action_search_programs"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        country = tracker.get_slot("country")
+        timeline = tracker.get_slot("timeline")
+        interests = tracker.get_slot("interests")
+        benefits = tracker.get_slot("benefits")
+        skills = tracker.get_slot("skills")
+        accommodation = tracker.get_slot("accommodation")
+        meal = tracker.get_slot("meal")
+
+        # Split the timeline into start and end dates
+        start_date, end_date = None, None
+        if timeline:
+            parts = timeline.split(" to ")
+            if len(parts) == 2:
+                start_date, end_date = parts
+
+        # Debug prints
+        print(f"Country: {country}")
+        print(f"Timeline: {timeline}")
+        print(f"Interests: {interests}")
+        print(f"Benefits: {benefits}")
+        print(f"Skills: {skills}")
+        print(f"Accommodation: {accommodation}")
+        print(f"Meal: {meal}")
+
+        with open("data/global_volunteer.json", "r") as file:
+            program_data = json.load(file)
+
+        filtered_programs = [
+            program for program in program_data
+            if program_matches_preferences(program, country, timeline, interests, benefits, skills, accommodation, meal)
+        ]
+
+        if filtered_programs:
+            program_list = "\n".join([program["Name"] for program in filtered_programs])
+            dispatcher.utter_message(text=f"Based on your preferences, here are some suitable programs:\n{program_list}")
+        else:
+            dispatcher.utter_message(text="I couldn't find any programs matching your preferences.")
+
+        return []
+
+def program_matches_preferences(program, country, timeline, interests, benefits, skills, accommodation, meal):
+    match = True
+    if country and program["Country"].lower() != country.lower():
+        match = False
+    if timeline and timeline not in program["Timeline"]:
+        match = False
+    if interests and interests not in program["Interests"]:
+        match = False
+    if benefits and benefits not in program["Benefits"]:
+        match = False
+    if skills and skills not in program["Skills"]:
+        match = False
+    if accommodation and accommodation not in program["Accommodation"]:
+        match = False
+    if meal and meal not in program["Meal"]:
+        match = False
+    return match
+
+
+class ActionAskCountry(Action):
+    def name(self) -> Text:
+        return "action_ask_country"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(text="In which country would you like to volunteer?")
+        return []
+
+
+class ActionAskTimeline(Action):
+    def name(self) -> Text:
+        return "action_ask_timeline"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(text="When are you available to volunteer?")
+        return []

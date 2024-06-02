@@ -1,0 +1,10 @@
+[
+  {
+    "name": "country",
+    "pattern": "\\b(Thailand|Cambodia|Vietnam|Taiwan|Sri Lanka|...)\\b"
+  },
+  {
+    "name": "country",
+    "pattern": "(\\bdata/countries\\.txt\\b)"
+  }
+]

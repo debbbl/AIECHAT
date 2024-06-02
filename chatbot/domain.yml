@@ -12,13 +12,81 @@ intents:
   - faq_how_to_apply
   - faq_global_volunteer_requirements
   - faq_apply_volunteering
-  - da
+  - inform_country
+  - inform_timeline
+  - inform_interests
+  - inform_benefits
+  - inform_skills
+  - inform_accommodation
+  - inform_meal
+  - inform_country_and_timeline
+
+entities:
+  - country
+  - timeline
+  - interests
+  - benefits
+  - skills
+  - accommodation
+  - meal
+
+slots:
+  country:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: country
+  timeline:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: timeline
+  interests:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: interests
+  benefits:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: benefits
+  skills:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: skills
+  accommodation:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: accommodation
+  meal:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: meal
 
 actions:
   - action_welcome
   - action_answer_question
   - action_faq
   - action_session_start
+  - action_search_programs
+  - action_ask_country
+  - action_ask_timeline
+  - action_ask_interests
+  - action_ask_benefits
+  - action_ask_skills
+  - action_ask_accommodation
+  - action_ask_meal
 
 responses:
   utter_welcome:
@@ -51,6 +119,25 @@ responses:
 
   utter_faq_global_volunteer_requirements:
   - text: "The requirements for the Global Volunteer program include being between 18-30 years old and having a good command of English. Some projects might have additional specific requirements."
+
+  utter_ask_country:
+    - text: "In which country would you like to volunteer?"
+  utter_ask_timeline:
+    - text: "When are you available to volunteer?"
+  utter_ask_interests:
+    - text: "What are your interests for the volunteer program?"
+  utter_ask_benefits:
+    - text: "Are there any specific benefits you're looking for in a program?"
+  utter_ask_skills:
+    - text: "What skills do you want to develop or utilize?"
+  utter_ask_accommodation:
+    - text: "Do you require accommodation?"
+  utter_ask_meal:
+    - text: "Do you need meals provided during the program?"
+  utter_suggest_programs:
+    - text: "Based on your preferences, here are some suitable programs: {program_list}"
+  utter_faq_documents_required:
+    - text: "You need to submit the following documents: [list of documents]."
 
 session_config:
   session_expiration_time: 60
