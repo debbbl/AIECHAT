@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="../styles/SAstyles.css"> 
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2></h2>
+            <a href="index.html">AIECHAT</a>
+            <a href="#">Sentiment Analysis</a>
+        </div>
+        <div class="main-content">
+            <h1>Sentiment Analysis Page</h1>
+            <!-- Add your sentiment analysis content here -->
+        </div>
+        <button class="menu-button" id="menuButton">
+            <img src="../images/menu-icon.png" alt="Menu">
+        </button>
+    </div>
+
+    <script>
+        const menuButton = document.getElementById("menuButton");
+        const sidebar = document.querySelector(".sidebar");
+
+        // Toggle sidebar visibility
+        menuButton.addEventListener("click", () => {
+            sidebar.classList.toggle("sidebar-open");
+        });
+    </script>
+</body>
+</html>

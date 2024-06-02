@@ -76,3 +76,10 @@ faqButtons.forEach(button => {
         sendMessage(message);
     });
 });
+
+const menuButton = document.getElementById("menuButton");
+const sidebar = document.querySelector(".sidebar");
+
+menuButton.addEventListener("click", () => {
+    sidebar.classList.toggle("sidebar-open");
+});

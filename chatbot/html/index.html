@@ -2,16 +2,20 @@
 <html>
 <head>
     <title>Chatbot</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
 </head>
 <body>
     <div class="container">
+        <div class="sidebar">
+            <h2></h2>
+            <a href="#">AIECHAT</a>
+            <a href="sentiment.html">Sentiment Analysis</a>
+        </div>
         <div class="main-content">
             <div class="chatbox">
                 <div class="chatbox-header">AIECHAT</div>
-                <div class="chatbox-body" id="messages">
-                </div>
-                <div class="faq-buttons" id="faqButtons">
+                <div id="messages" class="chatbox-body chat-list"></div>
+                <div id="faqButtons" class="faq-buttons">
                     <button class="faq-button">What is AIESEC?</button>
                     <button class="faq-button">How to join AIESEC?</button>
                     <button class="faq-button">Benefits of AIESEC?</button>
@@ -20,12 +24,15 @@
                 <div class="chatbox-footer">
                     <textarea id="userInput" placeholder="Type a message..."></textarea>
                     <button id="sendButton" class="send-button" disabled>
-                        <img src="images/send-icon.png" alt="Send">
-                    </button>
-                </div>                
+                        <img src="../images/send-icon.png" alt="Send"> 
+                    </button>                    
+                </div>
             </div>
         </div>
+        <button class="menu-button" id="menuButton">
+            <img src="../images/menu-icon.png" alt="Menu"> 
+        </button>
     </div>
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
