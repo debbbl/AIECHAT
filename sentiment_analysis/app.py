@@ -11,29 +11,22 @@ from flask import Flask , render_template , redirect , request
 app = Flask(__name__)
 
 
-with open('feedback1.json') as file:
+with open('overall_experience.json') as file:
     json_string = file.read()
     documents1 = json.loads(json_string)
     
-with open('feedback2.json') as file:
+with open('content_and_sessions.json') as file:
     json_string = file.read()
     documents2 = json.loads(json_string)
     
-with open('feedback3.json') as file:
+with open('networking_opportunities.json') as file:
     json_string = file.read()
     documents3 = json.loads(json_string)
     
-with open('feedback4.json') as file:
+with open('value_and_impact.json') as file:
     json_string = file.read()
     documents4 = json.loads(json_string)
     
-with open('feedback5.json') as file:
-    json_string = file.read()
-    documents5 = json.loads(json_string)
-    
-with open('feedback6.json') as file:
-    json_string = file.read()
-    documents6 = json.loads(json_string)
 
 label2category = {1: 'positive' , 0: 'neutral' , -1: 'negative'}
 category2label = {cat:label for label , cat in label2category.items()}
@@ -43,16 +36,12 @@ categories1 = [category2label[category] for doc , category in documents1]
 categories2 = [category2label[category] for doc , category in documents2]
 categories3 = [category2label[category] for doc , category in documents3]
 categories4 = [category2label[category] for doc , category in documents4]
-categories5 = [category2label[category] for doc , category in documents5]
-categories6 = [category2label[category] for doc , category in documents6]
 
 
 corpus1 = [' '.join(document) for document , cat in documents1]
 corpus2 = [' '.join(document) for document , cat in documents2]
 corpus3 = [' '.join(document) for document , cat in documents3]
 corpus4 = [' '.join(document) for document , cat in documents4]
-corpus5 = [' '.join(document) for document , cat in documents5]
-corpus6 = [' '.join(document) for document , cat in documents6]
 
 
 
@@ -78,17 +67,20 @@ def caption():
         cols2 = []
         cols3 = []
         cols4 = []
-        cols5 = []
-        cols6 = []
 
-        substring1 = ['teacher' , 'faculty' , 'feedback' , 'effectiveness' , 'teaching' , 'knowledge' , 'delivery' , 'content' , 'quality' , 
-                    'lecture' , 'subject' , 'syllabus' , 'review' , 'assessment']
-        substring2 = ['course' , 'content' , 'syllabus' , 'review' , 'evaluation' , 'curriculum' , 'syllabi' , 'contents' , 'level' , 
-                    'difficulty' , 'lecture' , 'outline']
-        substring3 = ['exam' , 'examination' , 'pattern' , 'conduct' , 'question' , 'paper' , 'level' , 'outline']
-        substring4 = ['laboratory' , 'laboratories' , 'lab' , 'facility' , 'facilities' , 'review' , 'feedback' , 'rate' , 'learning' ]
-        substring5 = ['library' , 'facilities' , 'books' , 'availability' , 'facility' , 'material' , 'rate' , 'feedback' , 'review']
-        substring6 = ['extra' , 'curricular' , 'activity' , 'activities']
+        substring1 = ['event', 'experience', 'program', 'occasion', 'function', 'gathering', 'activity', 'happening', 
+              'celebration', 'festivity', 'get-together', 'conference', 'workshop', 'seminar', 'symposium', 
+              'meeting', 'exhibition', 'convention', 'ceremony', 'competition']
+        substring2 = ['content', 'session', 'topic', 'agenda', 'subject', 'material', 'program', 'lecture', 
+              'presentation', 'discussion', 'workshop', 'seminar', 'training', 'course', 'class', 
+              'tutorial', 'demonstration', 'panel', 'talk', 'keynote']
+        substring3 = ['networking', 'opportunities', 'connections', 'contacts', 'network', 'interaction', 
+              'collaboration', 'engagement', 'meetings', 'socializing', 'relationship', 'community', 
+              'mixer', 'gatherings', 'conversations', 'exchanges', 'partnerships', 'alliances', 
+              'contacts', 'communication']
+        substring4 = ['value', 'impact', 'benefits', 'worth', 'significance', 'importance', 'contribution', 
+              'influence', 'effect', 'outcome', 'advantage', 'value-added', 'consequence', 'result', 
+              'effectiveness', 'efficacy', 'success', 'import', 'worthiness', 'merit']
 
 
         for i in list(df.columns):
@@ -118,23 +110,9 @@ def caption():
                     cols4.append(df.columns.get_loc(i))
                     if cols4 != []:
                         break
+                
                         
-                        
-        for i in list(df.columns):
-            for j in substring5:
-                if j.casefold() in i.casefold():
-                    cols5.append(df.columns.get_loc(i))
-                    if cols5 != []:
-                        break
-                        
-        for i in list(df.columns):
-            for j in substring6:
-                if j.casefold() in i.casefold():
-                    cols6.append(df.columns.get_loc(i))
-                    if cols6 != []:
-                        break
-                        
-        cols = cols1+cols2+cols3+cols4+cols5+cols6
+        cols = cols1+cols2+cols3+cols4
         cols = list(set(cols))
         
         df_form = pd.read_csv(path , usecols = cols)
@@ -144,44 +122,34 @@ def caption():
         pos2 , n2 , neg2 = faculty.predict(corpus1 , categories1 , reviews[: , 1])
         pos3 , n3 , neg3 = faculty.predict(corpus1 , categories1 , reviews[: , 2])
         pos4 , n4 , neg4 = faculty.predict(corpus1 , categories1 , reviews[: , 3])
-        pos5 , n5 , neg5 = faculty.predict(corpus1 , categories1 , reviews[: , 4])
-        pos6 , n6 , neg6 = faculty.predict(corpus1 , categories1 , reviews[: , 5])
 
         results = {
-            'f1' : 'Teacher Feedback',
+            'f1' : 'Overall Experience',
             'pos1' : pos1,
             'n1' : n1,
             'neg1' : neg1,
-            'f2' : 'Course Content',
+            'f2' : 'Content and Sessions',
             'pos2' : pos2,
             'n2' : n2,
             'neg1' : neg2,
-            'f3' : 'Examination pattern',
+            'f3' : 'Networking Opportunities',
             'pos3' : pos3,
             'n3' : n3,
             'neg3' : neg3,
-            'f4' : 'Laboratory',
+            'f4' : 'Value and Impact',
             'pos4' : pos4,
             'n4' : n4,
             'neg4' : neg4,
-            'f5' : 'Library Facilities',
-            'pos5' : pos5,
-            'n5' : n5,
-            'neg5' : neg5,
-            'f6' : 'Extra Co-Curricular Activities',
-            'pos6' : pos6,
-            'n6' : n6,
-            'neg6' : neg6,
         }
 
-        values = list([[pos1 , n1 , neg1], [pos2 , n2 , neg2], [pos3 , n3 , neg3], [pos4 , n4 , neg4], [pos5 , n5 , neg5], [pos6 , n6 , neg6]])
-        labels = list(['Teacher Feedback', 'Course Content', 'Examination pattern','Laboratory','Library Facilities', 'Extra Co-Curricular Activities'])
+        values = list([[pos1 , n1 , neg1], [pos2 , n2 , neg2], [pos3 , n3 , neg3], [pos4 , n4 , neg4]])
+        labels = list(['Overall Experience', 'Content and Sessions', 'Networking Opportunities','Value and Impact'])
         
         print(values[category_no-1] , labels[category_no-1] , category_no , category_no-1)
         
         if category_no == 1:
             results_1 = {
-                'f1' : 'Teacher Feedback',
+                'f1' : 'Overall Experience',
                 'pos1' : pos1,
                 'n1' : n1,
                 'neg1' : neg1
@@ -194,7 +162,7 @@ def caption():
 
         elif category_no == 2:
             results_2 = {
-                'f2' : 'Course Content',
+                'f2' : 'Content and Sessions',
                 'pos2' : pos2,
                 'n2' : n2,
                 'neg2' : neg2
@@ -207,7 +175,7 @@ def caption():
 
         elif category_no == 3:
             results_3 = {
-                'f3' : 'Examination pattern',
+                'f3' : 'Networking Opportunities',
                 'pos3' : pos3,
                 'n3' : n3,
                 'neg3' : neg3
@@ -220,7 +188,7 @@ def caption():
 
         elif category_no == 4:
             results_4 = {
-                'f4' : 'Laboratory',
+                'f4' : 'Value and Impact',
                 'pos4' : pos4,
                 'n4' : n4,
                 'neg4' : neg4
@@ -229,36 +197,9 @@ def caption():
             drawFigure.make(values[category_no-1] , labels[category_no-1] , category_no)
 
             return render_template('sentiment_analyzer1.html' , result4 = results_4 , cat = category_no)
-        
-
-        elif category_no == 5:
-            results_5 = {
-                'f5' : 'Library Facilities',
-                'pos5' : pos5,
-                'n5' : n5,
-                'neg5' : neg5
-            }
-
-            drawFigure.make(values[category_no-1] , labels[category_no-1] , category_no)       
-
-            return render_template('sentiment_analyzer1.html' , result5 = results_5 , cat = category_no)
-
-
-        elif category_no == 6:
-            results_6 = {
-                'f6' : 'Extra Co-Curricular Activities',
-                'pos6' : pos6,
-                'n6' : n6,
-                'neg6' : neg6
-            }
-
-            drawFigure.make(values[category_no-1] , labels[category_no-1] , category_no)           
-
-            return render_template('sentiment_analyzer1.html' , result6 = results_6 , cat = category_no)
-
 
         else:            
-            for i in range(0 , 6):
+            for i in range(0 , 4):
                 fig = plt.figure(figsize=(8,8) , edgecolor='red' , linewidth=10)
                 plt.bar(x = ['Positive' , 'Neutral' , 'Negative'] , height = values[i] , color=['blue','gold','red'])
                 plt.title(labels[i], fontsize = 24, weight = 'demibold', pad = 15, fontstyle = 'italic' , family = 'cursive')
