@@ -37,14 +37,16 @@ rules:
     - slot_was_set:
         - country
     - slot_was_set:
-        - timeline: null
+        - start_month: null
+        - end_month: null
   steps:
     - action: action_ask_timeline
 
 - rule: Ask for country if missing
   condition:
     - slot_was_set:
-        - timeline
+        - start_month
+        - end_month
     - slot_was_set:
         - country: null
   steps:
@@ -55,6 +57,32 @@ rules:
     - slot_was_set:
         - country
     - slot_was_set:
-        - timeline
+        - start_month
+        - end_month
   steps:
     - action: action_search_programs
+
+- rule: Trigger action for showing program details
+  steps:
+  - intent: inquire_program_details
+  - action: action_show_program_details
+
+- rule: Respond to meal inquiry
+  steps:
+  - intent: inquire_meal
+    entities:
+      - program
+  - action: action_ask_meal
+
+- rule: Respond to accommodation inquiry
+  steps:
+  - intent: inquire_accommodation
+    entities:
+      - program
+  - action: action_ask_accommodation
+
+
+
+
+
+

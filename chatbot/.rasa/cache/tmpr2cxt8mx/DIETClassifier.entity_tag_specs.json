@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-country",
+      "2": "I-country",
+      "3": "L-country",
+      "4": "U-country",
+      "5": "B-interests",
+      "6": "I-interests",
+      "7": "L-interests",
+      "8": "U-interests",
+      "9": "B-timeline",
+      "10": "I-timeline",
+      "11": "L-timeline",
+      "12": "U-timeline",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-country": 1,
+      "I-country": 2,
+      "L-country": 3,
+      "U-country": 4,
+      "B-interests": 5,
+      "I-interests": 6,
+      "L-interests": 7,
+      "U-interests": 8,
+      "B-timeline": 9,
+      "I-timeline": 10,
+      "L-timeline": 11,
+      "U-timeline": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

@@ -38,6 +38,22 @@ async function sendMessage(message = null) {
     // Scroll to the bottom of the messages
     messages.scrollTop = messages.scrollHeight;
 }
+function displayProgramButtons(programs) {
+    const programButtonsContainer = document.getElementById("programButtons");
+    programButtonsContainer.innerHTML = ""; // Clear existing buttons
+
+    programs.forEach((program, index) => {
+        const button = document.createElement("button");
+        button.textContent = program.title;
+        button.classList.add("faq-button"); // Apply same styling as FAQ buttons
+        button.addEventListener("click", () => selectProgram(index + 1)); // Add click event listener
+        programButtonsContainer.appendChild(button);
+    });
+}
+
+function selectProgram(programIndex) {
+    sendMessage(`Program ${programIndex}`); // Send a message indicating the selected program
+}
 
 document.getElementById('sendButton').addEventListener('click', () => {
     sendMessage();

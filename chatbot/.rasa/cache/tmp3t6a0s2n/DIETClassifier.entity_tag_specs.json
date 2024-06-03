@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-country",
+      "2": "I-country",
+      "3": "L-country",
+      "4": "U-country",
+      "5": "B-end_month",
+      "6": "I-end_month",
+      "7": "L-end_month",
+      "8": "U-end_month",
+      "9": "B-interests",
+      "10": "I-interests",
+      "11": "L-interests",
+      "12": "U-interests",
+      "13": "B-start_month",
+      "14": "I-start_month",
+      "15": "L-start_month",
+      "16": "U-start_month",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-country": 1,
+      "I-country": 2,
+      "L-country": 3,
+      "U-country": 4,
+      "B-end_month": 5,
+      "I-end_month": 6,
+      "L-end_month": 7,
+      "U-end_month": 8,
+      "B-interests": 9,
+      "I-interests": 10,
+      "L-interests": 11,
+      "U-interests": 12,
+      "B-start_month": 13,
+      "I-start_month": 14,
+      "L-start_month": 15,
+      "U-start_month": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]

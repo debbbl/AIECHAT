@@ -132,11 +132,9 @@ nlu:
 
 - intent: inform_timeline
   examples: |
-    - I'm available from [July](timeline) to [September](timeline)
-    - What programs are available from [August](timeline) to [September](timeline)?
-    - Show me programs for [September](timeline)
-    - I can volunteer from [July](timeline) to [August](timeline)
-    - How about programs in [August](timeline)?
+    - I'm available from [July](start_month) to [September](end_month)
+    - What programs are available from [August](start_month) to [September](end_month)?
+    - I can volunteer from [June](start_month) to [October](end_month)
 
 - intent: inform_interests
   examples: |
@@ -168,11 +166,20 @@ nlu:
     - What meal arrangements are available?
     - Do volunteers need to cook their own meals?
 
+- intent: inquire_program_details
+  examples: |
+    - Can I know more about it?
+    - What are the details of this program?
+    - I'd like to know more about this program.
+    - Tell me about this program.
+
 - intent: inform_country_and_timeline
   examples: |
-    - I want to volunteer in [Thailand](country) from [July](timeline) to [September](timeline)
-    - What programs are available in [Cambodia](country) in [August](timeline)?
-    - Any volunteer opportunities in [Vietnam](country) from [July](timeline)?
+    - I want to volunteer in [Thailand](country) from [June](start_month) to [June](end_month)?
+    - What programs are available in [Cambodia](country) in [July](start_month) to [July](end_month)?
+    - Any volunteer opportunities in [Vietnam](country) from [August](start_month) to [August](end_month)?
+    - Any volunteer opportunities in [Sri Lanka](country) from [September](start_month) to [September](end_month)?
+    - Any volunteer opportunities in [Sri Lanka](country) from [October](start_month) to [October](end_month)?
 
 - lookup: country
   examples: |
@@ -184,6 +191,19 @@ nlu:
     - India
     - Indonesia
     - Nepal
+
+- intent: inquire_meal
+  examples: |
+    - Is meal provided for this program?
+    - Is meal covered for this program?
+    - Does this program provide meal?
+
+- intent: inquire_accommodation
+  examples: |
+    - Is accommodation provided for this program?
+    - Is accommodation covered for this program?
+    - Does this program provide accomodation?
+
 
 - regex: country
   examples: |

@@ -1,0 +1,7 @@
+{
+  "rule_only_slots": [
+    "timeline",
+    "country"
+  ],
+  "rule_only_loops": []
+}
