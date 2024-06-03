@@ -116,6 +116,19 @@ nlu:
     - I want to volunteer in [Thailand](country)
     - Do you have programs in [Cambodia](country)?
     - Any volunteer opportunities in [Vietnam](country)?
+    - I am interested in volunteering in [Taiwan](country)
+    - Can you show me opportunities in [Sri Lanka](country)?
+    - Programs available in [India](country)?
+    - Interested in volunteering in [Indonesia](country)
+    - Any volunteer opportunities in [Nepal](country)?
+    - Looking for programs in [Thailand](country)
+    - Are there any volunteer opportunities in [Cambodia](country)?
+    - Can you tell me about volunteer programs in [Vietnam](country)?
+    - Tell me about volunteering in [Taiwan](country)
+    - I want to volunteer in [Sri Lanka](country)
+    - Volunteer opportunities in [India](country)
+    - Any programs available in [Indonesia](country)?
+    - I'm looking for volunteering opportunities in [Nepal](country)
 
 - intent: inform_timeline
   examples: |
@@ -163,11 +176,18 @@ nlu:
 
 - lookup: country
   examples: |
-    - data/countries.txt
+    - Thailand
+    - Cambodia
+    - Vietnam
+    - Taiwan
+    - Sri Lanka
+    - India
+    - Indonesia
+    - Nepal
 
 - regex: country
   examples: |
-    - \b(Thailand|Cambodia|Vietnam|Taiwan|Sri Lanka|...)\b
+    - \b(Thailand|Cambodia|Vietnam|Taiwan|Sri Lanka|India|Indonesia|Nepal)\b
 
     
   

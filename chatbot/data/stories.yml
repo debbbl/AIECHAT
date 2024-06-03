@@ -66,11 +66,11 @@ stories:
   steps:
   - intent: inform_country
     entities:
-      - country: "Thailand"
+      - country
   - action: action_ask_timeline
   - intent: inform_timeline
     entities:
-      - timeline: "July to September"
+      - timeline
   - action: action_search_programs
 
 - story: User provides timeline and is asked for country

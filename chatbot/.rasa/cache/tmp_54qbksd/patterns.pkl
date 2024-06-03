@@ -1,0 +1,10 @@
+[
+  {
+    "name": "country",
+    "pattern": "\\b(Thailand|Cambodia|Vietnam|Taiwan|Sri Lanka|...)\\b"
+  },
+  {
+    "name": "country",
+    "pattern": "(\\bThailand\\b|\\bCambodia\\b|\\bVietnam\\b|\\bTaiwan\\b|\\bSri\\ Lanka\\b|\\bIndia\\b|\\bIndonesia\\b|\\bNepal\\b)"
+  }
+]

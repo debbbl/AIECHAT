@@ -1,0 +1,37 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_ask_country\"}, \"slots\": {\"country\": \"should_not_be_set\", \"timeline\": [1.0]}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}]": "utter_iamabot",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}, {\"prev_action\": {\"action_name\": \"utter_iamabot\"}, \"user\": {\"intent\": \"bot_challenge\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"faq_about_aiesec\"}}]": "action_answer_question",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"faq_about_aiesec\"}}, {\"prev_action\": {\"action_name\": \"action_answer_question\"}, \"user\": {\"intent\": \"faq_about_aiesec\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_session_start\"}}]": "action_welcome",
+      "[{\"prev_action\": {\"action_name\": \"action_session_start\"}}, {\"prev_action\": {\"action_name\": \"action_welcome\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"faq_global_volunteer_requirements\"}}]": "action_answer_question",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"faq_global_volunteer_requirements\"}}, {\"prev_action\": {\"action_name\": \"action_answer_question\"}, \"user\": {\"intent\": \"faq_global_volunteer_requirements\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"faq_how_to_apply\"}}]": "action_answer_question",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"faq_how_to_apply\"}}, {\"prev_action\": {\"action_name\": \"action_answer_question\"}, \"user\": {\"intent\": \"faq_how_to_apply\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_ask_timeline\"}, \"slots\": {\"country\": [1.0], \"timeline\": \"should_not_be_set\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]": "utter_goodbye",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_search_programs\"}, \"slots\": {\"country\": [1.0], \"timeline\": [1.0]}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "predicting default action with intent session_start",
+      "[{\"prev_action\": {\"action_name\": \"action_session_start\"}}, {\"prev_action\": {\"action_name\": \"action_welcome\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_session_start\"}}]",
+      "predicting default action with intent restart",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}, {\"prev_action\": {\"action_name\": \"utter_iamabot\"}, \"user\": {\"intent\": \"bot_challenge\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"faq_global_volunteer_requirements\"}}, {\"prev_action\": {\"action_name\": \"action_answer_question\"}, \"user\": {\"intent\": \"faq_global_volunteer_requirements\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}]",
+      "predicting default action with intent back",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"faq_global_volunteer_requirements\"}}]"
+    ]
+  }
+}
