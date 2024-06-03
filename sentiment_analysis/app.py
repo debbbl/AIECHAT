@@ -58,7 +58,7 @@ corpus6 = [' '.join(document) for document , cat in documents6]
 
 @app.route('/')
 def display():
-    return render_template('sentiment_analysis.html')
+    return render_template('sentiment_analyzer.html')
 
 
 @app.route('/' , methods=['POST'])
@@ -215,7 +215,7 @@ def caption():
 
             drawFigure.make(values[category_no-1] , labels[category_no-1] , category_no)
 
-            return render_template('sentiment_analysis1.html' , result3 = results_3 , cat = category_no)
+            return render_template('sentiment_analyzer1.html' , result3 = results_3 , cat = category_no)
 
 
         elif category_no == 4:
@@ -228,7 +228,7 @@ def caption():
 
             drawFigure.make(values[category_no-1] , labels[category_no-1] , category_no)
 
-            return render_template('sentiment_analysis1.html' , result4 = results_4 , cat = category_no)
+            return render_template('sentiment_analyzer1.html' , result4 = results_4 , cat = category_no)
         
 
         elif category_no == 5:
@@ -241,7 +241,7 @@ def caption():
 
             drawFigure.make(values[category_no-1] , labels[category_no-1] , category_no)       
 
-            return render_template('sentiment_analysis1.html' , result5 = results_5 , cat = category_no)
+            return render_template('sentiment_analyzer1.html' , result5 = results_5 , cat = category_no)
 
 
         elif category_no == 6:
@@ -254,7 +254,7 @@ def caption():
 
             drawFigure.make(values[category_no-1] , labels[category_no-1] , category_no)           
 
-            return render_template('sentiment_analysis1.html' , result6 = results_6 , cat = category_no)
+            return render_template('sentiment_analyzer1.html' , result6 = results_6 , cat = category_no)
 
 
         else:            
@@ -277,7 +277,7 @@ def caption():
                     textcoords='offset points', fontsize = 16 , fontweight = 'medium')
                 plt.savefig(f'../static/plot{i+10}.jpg')
 
-            return render_template('isentiment_analysis1.html' , result = results)  
+            return render_template('sentiment_analyzer1.html' , result = results)  
     
     else:
         return render_template('error.html')
