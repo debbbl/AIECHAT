@@ -19,10 +19,9 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, EventType
 import json
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.pipeline import make_pipeline
-from fuzzywuzzy import process
+import re
+from rasa_sdk.events import SlotSet
+from datetime import datetime
 
 
 class ActionAnswerQuestion(Action):
@@ -84,70 +83,135 @@ class ActionSearchPrograms(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         country = tracker.get_slot("country")
-        timeline = tracker.get_slot("timeline")
-        interests = tracker.get_slot("interests")
-        benefits = tracker.get_slot("benefits")
-        skills = tracker.get_slot("skills")
-        accommodation = tracker.get_slot("accommodation")
-        meal = tracker.get_slot("meal")
+        start_month = tracker.get_slot("start_month")
+        end_month = tracker.get_slot("end_month")
 
-        # Split the timeline into start and end dates
+        # Initialize start and end dates
         start_date, end_date = None, None
-        if timeline:
-            parts = timeline.split(" to ")
-            if len(parts) == 2:
-                start_date, end_date = parts
 
-        # Debug prints
-        print(f"Country: {country}")
-        print(f"Timeline: {timeline}")
-        print(f"Interests: {interests}")
-        print(f"Benefits: {benefits}")
-        print(f"Skills: {skills}")
-        print(f"Accommodation: {accommodation}")
-        print(f"Meal: {meal}")
+        # Convert month names to their corresponding numerical values
+        user_start_month_lower = None
+        user_end_month_lower = None
+        if start_month:
+            user_start_month_lower = start_month.lower()
+            start_date = datetime.strptime(start_month, "%B").month
+        if end_month:
+            user_end_month_lower = end_month.lower()
+            end_date = datetime.strptime(end_month, "%B").month
+
+            # Debug prints
+            print(f"Country: {country}")
+            print(f"Start month: {start_month}")
+            print(f"End month: {end_month}")
 
         with open("data/global_volunteer.json", "r") as file:
             program_data = json.load(file)
 
         filtered_programs = [
             program for program in program_data
-            if program_matches_preferences(program, country, timeline, interests, benefits, skills, accommodation, meal)
+            if program_matches_preferences(program, country, user_start_month_lower, user_end_month_lower)
         ]
 
         if filtered_programs:
             program_list = "\n".join([program["Name"] for program in filtered_programs])
-            dispatcher.utter_message(text=f"Based on your preferences, here are some suitable programs:\n{program_list}")
+            dispatcher.utter_message(
+                text=f"Based on your preferences, here are some suitable programs:\n{program_list}")
         else:
             dispatcher.utter_message(text="I couldn't find any programs matching your preferences.")
 
         return []
 
-def program_matches_preferences(program, country, timeline, interests, benefits, skills, accommodation, meal):
+class ActionShowProgramDetails(Action):
+    def name(self) -> Text:
+        return "action_show_program_details"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        suggested_program = tracker.get_slot("suggested_program")
+
+        if suggested_program:
+            response = f"Program Name: {suggested_program['Name']}\n\nKey Activities:\n{', '.join(suggested_program['Key Activities'])}\n\nObjectives: {suggested_program['Objectives']}\n\nInterests: {suggested_program['Interests']}\n\nTimeline: {suggested_program['Timeline']}\n\nBenefits: {suggested_program['Benefits']}\n\nSkills: {suggested_program['Skills']}\n\nAccommodation: {suggested_program['Accommodation']}\n\nMeal: {suggested_program['Meal']}"
+            dispatcher.utter_message(text=response)
+        else:
+            dispatcher.utter_message(text="No suggested program available.")
+
+        return []
+
+# def parse_month(month_str):
+#     return datetime.strptime(month_str, "%B").month
+
+def program_matches_preferences(program, country, start_month, end_month):
     match = True
     if country and program["Country"].lower() != country.lower():
         match = False
-    if timeline and timeline not in program["Timeline"]:
-        match = False
-    if interests and interests not in program["Interests"]:
-        match = False
-    if benefits and benefits not in program["Benefits"]:
-        match = False
-    if skills and skills not in program["Skills"]:
-        match = False
-    if accommodation and accommodation not in program["Accommodation"]:
-        match = False
-    if meal and meal not in program["Meal"]:
-        match = False
+    if start_month and end_month:
+        program_timeline = program.get("Timeline", "").lower()
+        if " to " in program_timeline:
+            program_start_month, program_end_month = map(lambda x: x.lower(), program_timeline.split(" to "))
+            if start_month > program_end_month or end_month < program_start_month:
+                match = False
+        else:
+            # Handle cases where timeline data doesn't match expected format
+            match = False
     return match
 
 
+class ActionAskMeal(Action):
+    def name(self) -> Text:
+        return "action_ask_meal"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        suggested_program = tracker.get_slot("suggested_program")
+        country = tracker.get_slot("country")
+
+        with open("data/global_volunteer.json", "r") as file:
+            program_data = json.load(file)
+
+        for program in program_data:
+            if program["Name"] == suggested_program:
+                meal = program.get("Meal", "Details not available")
+                dispatcher.utter_message(text=f"Meal for {suggested_program} in {country} is {meal}")
+                break
+        else:
+            dispatcher.utter_message(text="Program details not found.")
+
+        return []
+
+class ActionAskAccommodation(Action):
+    def name(self) -> Text:
+        return "action_ask_accommodation"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        suggested_program = tracker.get_slot("suggested_program")
+        country = tracker.get_slot("country")
+
+        with open("data/global_volunteer.json", "r") as file:
+            program_data = json.load(file)
+
+        for program in program_data:
+            if program["Name"] == suggested_program:
+                accommodation = program.get("Accommodation", "Details not available")
+                dispatcher.utter_message(text=f"Accommodation for {suggested_program} in {country} is {accommodation}")
+                break
+        else:
+            dispatcher.utter_message(text="Program details not found.")
+
+        return []
 class ActionAskCountry(Action):
     def name(self) -> Text:
         return "action_ask_country"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         dispatcher.utter_message(text="In which country would you like to volunteer?")
+        return []
+
+class ActionAskInterests(Action):
+    def name(self) -> Text:
+        return "action_ask_interests"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(text="What are your interests?")
         return []
 
 
