@@ -81,18 +81,6 @@
                         <td>{{ result['n4'] }} </td>
                         <td>{{ result['neg4'] }}</td>
                     </tr>
-                    <tr>
-                        <th>{{ result['f5'] }}</th>
-                        <td>{{ result['pos5'] }}</td>
-                        <td>{{ result['n5'] }} </td>
-                        <td>{{ result['neg5'] }}</td>
-                    </tr>
-                    <tr>
-                        <th>{{ result['f6'] }}</th>
-                        <td>{{ result['pos6'] }}</td>
-                        <td>{{ result['n6'] }} </td>
-                        <td>{{ result['neg6'] }}</td>
-                    </tr>
                 </table>
             </div>
 
@@ -102,7 +90,7 @@
 
             <div id="plot">
 
-                {% for i in range(0 , 6) %}
+                {% for i in range(0 , 4) %}
                 <div> <img src="../static/plot{{i+10}}.jpg" alt="chart"> </div>
                 {% endfor %}
 
@@ -227,64 +215,6 @@
 
         </div>
 
-        {% elif result5 %}
-        <div id="Text_Area1" class="textarea">
-            <div>
-                <table>
-                    <caption class="cap"> Results of Sentiment Analysis </caption>
-                    <tr class="headin">
-                        <th>Category</th>
-                        <th>Positive</th>
-                        <th>Neutral</th>
-                        <th>Negative</th>
-                    </tr>
-                    <tr>
-                        <th>{{ result5['f5'] }}</th>
-                        <td>{{ result5['pos5'] }}</td>
-                        <td>{{ result5['n5'] }} </td>
-                        <td>{{ result5['neg5'] }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <button onclick="show_plot1()" id="but3" type="button" name="display-button" value="plot1"> Show Plot </button>
-            </div>
-
-            <div id="plot1">
-                <div> <img src="../static/plot{{cat}}.jpg" alt="chart"> </div>
-            </div>
-
-        </div>
-
-        {% elif result6 %}
-        <div id="Text_Area1" class="textarea">
-            <div>
-                <table>
-                    <caption class="cap"> Results of Sentiment Analysis </caption>
-                    <tr class="headin">
-                        <th>Category</th>
-                        <th>Positive</th>
-                        <th>Neutral</th>
-                        <th>Negative</th>
-                    </tr>
-                    <tr>
-                        <th>{{ result6['f6'] }}</th>
-                        <td>{{ result6['pos6'] }}</td>
-                        <td>{{ result6['n6'] }} </td>
-                        <td>{{ result6['neg6'] }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <button onclick="show_plot1()" id="but3" type="button" name="display-button" value="plot1"> Show Plot </button>
-            </div>
-
-            <div id="plot1">
-                <div> <img src="../static/plot{{cat}}.jpg" alt="chart"> </div>
-            </div>
-
-        </div>
-        
         {% endif %}
 
 
