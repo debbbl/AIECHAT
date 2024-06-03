@@ -275,7 +275,7 @@ def caption():
                     ax.annotate("%.1f%%" % (100*float(p.get_height()/sum(values[i]))), (p.get_x() + p.get_width() / 2., abs(p.get_height())),
                     ha='center', va='bottom', color='black', xytext=(0, 5),rotation = 'horizontal',
                     textcoords='offset points', fontsize = 16 , fontweight = 'medium')
-                plt.savefig(f'../static/plot{i+10}.jpg')
+                plt.savefig(f'static/plot{i+10}.jpg')
 
             return render_template('sentiment_analyzer1.html' , result = results)  
     

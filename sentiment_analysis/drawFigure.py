@@ -25,6 +25,6 @@ def make(value , label , category_no):
         ha='center', va='bottom', color='black', xytext=(0, 5),rotation = 'horizontal',
         textcoords='offset points', fontsize = 16 , fontweight = 'medium')
         
-    plt.savefig(f'../static/plot{category_no}.jpg')
+    plt.savefig(f'static/plot{category_no}.jpg')
 
     return
