@@ -84,6 +84,26 @@
     [["events", "serve", "as", "a", "catalyst", "for", "professional", "networking", "and", "growth"], "positive"],
     [["networking", "events", "provide", "a", "platform", "for", "attendees", "to", "build", "strong", "business", "relationships"], "positive"],
     [["events", "offer", "an", "ideal", "setting", "for", "attendees", "to", "network", "and", "connect"], "positive"],
-    [["well-organized", "networking", "opportunities", "at", "events", "are", "highly", "effective", "for", "participants"], "positive"]
+    [["well-organized", "networking", "opportunities", "at", "events", "are", "highly", "effective", "for", "participants"], "positive"],
+    [["networking", "events", "are", "part", "of", "industry", "conferences"], "neutral"],
+    [["events", "include", "networking", "sessions"], "neutral"],
+    [["opportunities", "to", "network", "are", "available", "at", "events"], "neutral"],
+    [["networking", "is", "a", "component", "of", "these", "events"], "neutral"],
+    [["attendees", "have", "a", "chance", "to", "network", "at", "events"], "neutral"],
+    [["events", "feature", "networking", "segments"], "neutral"],
+    [["participants", "can", "engage", "in", "networking", "activities"], "neutral"],
+    [["networking", "options", "are", "included", "in", "events"], "neutral"],
+    [["events", "offer", "opportunities", "for", "networking"], "neutral"],
+    [["networking", "is", "part", "of", "the", "event", "schedule"], "neutral"],
+    [["networking", "events", "are", "often", "unproductive"], "negative"],
+    [["events", "lack", "effective", "networking", "opportunities"], "negative"],
+    [["networking", "sessions", "are", "poorly", "organized"], "negative"],
+    [["attendees", "find", "networking", "sessions", "to", "be", "ineffective"], "negative"],
+    [["events", "provide", "limited", "networking", "chances"], "negative"],
+    [["networking", "at", "events", "is", "often", "disappointing"], "negative"],
+    [["events", "fail", "to", "offer", "meaningful", "networking", "opportunities"], "negative"],
+    [["networking", "sessions", "are", "not", "engaging"], "negative"],
+    [["events", "are", "not", "conducive", "to", "effective", "networking"], "negative"],
+    [["networking", "opportunities", "at", "events", "are", "overrated"], "negative"]
 ]
 
