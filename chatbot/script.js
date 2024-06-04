@@ -27,7 +27,7 @@ async function sendMessage(message = null) {
     data.forEach((msg) => {
         const botMessage = document.createElement('div');
         botMessage.classList.add('message', 'bot');
-        botMessage.innerHTML = `<img src="images/bot-profile.png" alt="Bot"><div class="content">${msg.text}</div>`;
+        botMessage.innerHTML = `<img src="../images/bot-profile.png" alt="Bot"><div class="content">${msg.text}</div>`;
         messages.appendChild(botMessage);
     });
 
