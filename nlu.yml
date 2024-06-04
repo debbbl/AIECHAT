@@ -1,0 +1,282 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - ciao
+    - good by
+    - see you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremely sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: faq_about_aiesec
+  examples: |
+    - What is AIESEC?
+    - Tell me about AIESEC.
+    - What does AIESEC do?
+
+- intent: faq_how_to_apply
+  examples: |
+    - How can I apply for a volunteering program?
+    - What's the process to apply for a program?
+
+- intent: faq_global_volunteer_requirements
+  examples: |
+    - What are the requirements for the Global Volunteer program?
+    - Can you tell me about the requirements for the Global Volunteer program?
+
+- intent: faq_apply_volunteering
+  examples: |
+    - How do I apply for a volunteering program?
+    - Can you guide me on how to apply for a volunteer program?
+
+- intent: inform_country
+  examples: |
+    - I want to volunteer in [Thailand](country)
+    - Do you have programs in [Cambodia](country)?
+    - Any volunteer opportunities in [Vietnam](country)?
+    - I am interested in volunteering in [Taiwan](country)
+    - Can you show me opportunities in [Sri Lanka](country)?
+    - Programs available in [India](country)?
+    - Interested in volunteering in [Indonesia](country)
+    - Any volunteer opportunities in [Nepal](country)?
+    - Looking for programs in [Thailand](country)
+    - Are there any volunteer opportunities in [Cambodia](country)?
+    - Can you tell me about volunteer programs in [Vietnam](country)?
+    - Tell me about volunteering in [Taiwan](country)
+    - I want to volunteer in [Sri Lanka](country)
+    - Volunteer opportunities in [India](country)
+    - Any programs available in [Indonesia](country)?
+    - I'm looking for volunteering opportunities in [Nepal](country)
+
+- intent: inform_timeline
+  examples: |
+    - I'm available from [July](start_month) to [September](end_month)
+    - What programs are available from [August](start_month) to [September](end_month)?
+    - I can volunteer from [June](start_month) to [October](end_month)
+
+- intent: inform_interests
+  examples: |
+    - I'm interested in [Teaching](interests)
+    - I want to do [Cultural Exchange](interests) activities
+    - Any programs with [Environmental Conservation](interests)?
+
+- intent: inform_benefits
+  examples: |
+    - What benefits are provided?
+    - Are accommodations covered?
+    - Do you offer any benefits for volunteers?
+
+- intent: inform_skills
+  examples: |
+    - What skills are required?
+    - Are there specific skills needed?
+    - Do I need any prior experience or skills?
+
+- intent: inform_accommodation
+  examples: |
+    - Is accommodation provided?
+    - What are the accommodation arrangements?
+    - Do volunteers stay with host families?
+
+- intent: inform_meal
+  examples: |
+    - Are meals provided?
+    - What meal arrangements are available?
+    - Do volunteers need to cook their own meals?
+
+- intent: inquire_program_details
+  examples: |
+    - Can I know more about it?
+    - What are the details of this program?
+    - I'd like to know more about this program.
+    - Tell me about this program.
+
+- intent: inform_country_and_timeline
+  examples: |
+    - I want to volunteer in [Thailand](country) from [June](start_month) to [June](end_month)?
+    - What programs are available in [Cambodia](country) in [July](start_month) to [July](end_month)?
+    - Any volunteer opportunities in [Vietnam](country) from [August](start_month) to [August](end_month)?
+    - Any volunteer opportunities in [Sri Lanka](country) from [September](start_month) to [September](end_month)?
+    - Any volunteer opportunities in [Sri Lanka](country) from [October](start_month) to [October](end_month)?
+
+- lookup: country
+  examples: |
+    - Thailand
+    - Cambodia
+    - Vietnam
+    - Taiwan
+    - Sri Lanka
+    - India
+    - Indonesia
+    - Nepal
+
+- intent: inquire_meal
+  examples: |
+    - Is meal provided for this program?
+    - Is meal covered for this program?
+    - Does this program provide meal?
+
+- intent: inquire_accommodation
+  examples: |
+    - Is accommodation provided for this program?
+    - Is accommodation covered for this program?
+    - Does this program provide accomodation?
+
+- regex: country
+  examples: |
+    - \b(Thailand|Cambodia|Vietnam|Taiwan|Sri Lanka|India|Indonesia|Nepal)\b
+    
+- intent: inquire_intake_process 
+  examples: |
+    - What is the volunteer intake process for the [Clean Our Plate](myv_program) program?
+    - What are the steps to become a volunteer in the [Love Yourself](myv_program) program?
+    - How does one apply and get selected for [Speak Up](myv_program) program?
+
+- regex: myv_program
+  examples: |
+    - \b(Clean Our Plate|Love Yourself|Speak Up)\b
+
+- lookup: myv_program
+  examples: |
+    - Clean Our Plate
+    - Love Yourself
+    - Speak Up
+
+- intent: inquire_speak_up_activities 
+  examples: |
+    - What are the main activities involved in the Speak Up project?
+    - Can you tell me about the various activities in Speak Up project?
+    
+- intent: inquire_clean_our_plate_activities 
+  examples: |
+    - What activities can I join in the Clean Our Plate project?
+    - What kinds of activities are available in the Clean Our Plate project?
+    
+- intent: inquire_love_yourself_activities 
+  examples: |
+    - What are the key activities in the Love Yourself project?
+    - What activities are open for me to join as part of the Love Yourself project?
+    
+- intent: inquire_program_fee 
+  examples: |
+    - What is the fee to volunteer in the [Clean Our Plate](myv_program) project?
+    - How much should I pay to join the [Speak Up](myv_program) project?
+    - What is the cost of volunteering in the [Love Yourself](myv_program) project?
+    
+- intent: inquire_speak_up
+  examples: |
+    - What is the Speak Up project?
+    - Can you explain to me about the Speak Up project?
+    - Can you give me an overview of the Speak Up project?
+    - What is the Speak Up project all about?
+
+- intent: inquire_clean_our_plate
+  examples: |
+    - What is the Clean Our Plate project?
+    - Can you explain to me about the Clean Our Plate project?
+    - Can you give me an overview of the Clean Our Plate project?
+    - What is the Clean Our Plate project all about?
+
+- intent: inquire_love_yourself
+  examples: |
+    - What is the Love Yourself project?
+    - Can you explain to me about the Love Yourself project?
+    - Can you give me an overview of the  Love Yourself project?
+    - What is the Love Yourself project all about?
+
+- intent: inquire_speak_up_contact
+  examples: |
+    - Can you give me the contact information of the Speak Up organizing committee?
+    - I would like to ask about the contact details for the Speak Up organizing committee.
+
+- intent: inquire_clean_our_plate_contact
+  examples: |
+    - Can I know how to contact the Clean Our Plate organizing committee?
+    - Can you provide me with the contact information of the organizing team of Clean Our Plate?
+
+- intent: inquire_love_yourself_contact
+  examples: |
+    - How can I reach out to the organizing committee of Love Yourself?
+    - I would like to ask about the contact information for the Love Yourself committee.
