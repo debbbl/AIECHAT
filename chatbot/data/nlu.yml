@@ -160,6 +160,17 @@ nlu:
     - What are the accommodation arrangements?
     - Do volunteers stay with host families?
 
+- intent: provide_country
+  examples: |
+    - [Thailand](country)
+    - [Cambodia](country)
+    - [Vietnam](country)
+    - [Taiwan](country)
+    - [Sri Lanka](country)
+    - [India](country)
+    - [Indonesia](country)
+    - [Nepal](country)
+
 - intent: inform_meal
   examples: |
     - Are meals provided?
@@ -168,10 +179,32 @@ nlu:
 
 - intent: inquire_program_details
   examples: |
-    - Can I know more about it?
-    - What are the details of this program?
-    - I'd like to know more about this program.
-    - Tell me about this program.
+      - Can I know more about [Global Classroom](program) in [Sri Lanka](country)?
+      - What is [Aquatica](program) about?
+      - Can you provide details about [Back to Pristine](program)?
+      - I'd like to know more about [Fingerprint](program) in [Cambodia](country).
+      - Tell me about the [Global Classroom](program) program in [Thailand](country).
+      - Could you share more about [Global Classroom (Sawasdee Project)](program)?
+      - I want to know about [Green Leaders](program) in [Vietnam](country).
+      - Please tell me the details of [Happy Bus](program).
+      - Give me information on [On the Map](program) in [Indonesia](country).
+      - What can you tell me about [Raise Your Voice](program)?
+      - I need details on [Rooted](program) in [Taiwan](country).
+      - Can you tell me about [Skill up](program)?
+      - Provide information about [Youth 4 Impact](program).
+      - What is the [YouthTube Camp](program) program?
+      - Can you tell me about [Aquatica](program) in [Indonesia](country)?
+      - I want to know more about [Back to Pristine](program) in [Nepal](country).
+      - What are the details of [Fingerprint](program) in [India](country)?
+      - Can you provide more information about [Global Classroom](program) in [Laos](country)?
+      - Tell me about [Global Classroom (Sawasdee Project)](program) in [Cambodia](country).
+      - I'd like to learn more about [Green Leaders](program).
+      - What can you share about [Happy Bus](program) in [Myanmar](country)?
+      - Please provide details on [On the Map](program).
+      - What is the [Rooted](program) program?
+      - Tell me about [Scale Up](program).
+      - I'd like to know about [Youth 4 Impact](program).
+      - What is [YouthTube Camp](program) about?
 
 - intent: inform_country_and_timeline
   examples: |
@@ -204,6 +237,110 @@ nlu:
     - Is accommodation covered for this program?
     - Does this program provide accomodation?
 
+- intent: inquire_countries_available
+  examples: |
+    - What are the countries available to volunteer?
+    - List of countries for volunteering
+    - Where can I volunteer?
+    - Which countries offer volunteer programs?
+
+- intent: inquire_volunteer_programs
+  examples: |
+    - What are the volunteer programs available in [Taiwan](country)?
+    - Show me volunteer programs in [Vietnam](country)
+    - List of volunteering opportunities in [India](country)
+    - Can you provide volunteer programs for [Thailand](country)?
+
+- intent: inquire_intake_process
+  examples: |
+    - What is the volunteer intake process for the [Clean Our Plate](myv_program) program?
+    - What are the steps to become a volunteer in the [Love Yourself](myv_program) program?
+    - How does one apply and get selected for [Speak Up](myv_program) program?
+
+- regex: myv_program
+  examples: |
+    - \b(Clean Our Plate|Love Yourself|Speak Up)\b
+
+- lookup: myv_program
+  examples: |
+    - Clean Our Plate
+    - Love Yourself
+    - Speak Up
+
+- intent: inquire_speakup_activities
+  examples: |
+    - What are the main activities involved in the [Speak Up](myv_program) project?
+    - Can you tell me about the various activities in [Speak Up](myv_program) project?
+    - What activities can I join in the [Speak Up](myv_program) project?
+    - What kinds of activities are available in the [Speak Up](myv_program) project?
+
+- intent: inquire_cop_activities
+  examples: |
+    - What are the main activities involved in the [Clean Our Plate](myv_program) project?
+    - Can you tell me about the various activities in [Clean Our Plate](myv_program) project?
+    - What activities can I join in the [Clean Our Plate](myv_program) project?
+    - What kinds of activities are available in the [Clean Our Plate](myv_program) project?
+
+- intent: inquire_ly_activities
+  examples: |
+    - What are the main activities involved in the [Love Yourself](myv_program) project?
+    - Can you tell me about the various activities in [Love Yourself](myv_program) project?
+    - What activities can I join in the [Love Yourself](myv_program) project?
+    - What kinds of activities are available in the [Love Yourself](myv_program) project?
+
+- intent: inquire_program_fee
+  examples: |
+    - What is the fee to volunteer in the [Clean Our Plate](myv_program) project?
+    - How much should I pay to join the [Speak Up](myv_program) project?
+    - What is the cost of volunteering in the [Love Yourself](myv_program) project?
+
+- intent: inquire_speakup_program
+  examples: |
+    - What is the [Speak Up](myv_program) project?
+    - Can you explain to me about the [Speak Up](myv_program) project?
+    - Can you give me an overview of the [Speak Up](myv_program) project?
+    - What is the [Speak Up](myv_program) project all about?
+
+- intent: inquire_cop_program
+  examples: |
+    - What is the [Clean Our Plate](myv_program) project?
+    - Can you explain to me about the [Clean Our Plate](myv_program) project?
+    - Can you give me an overview of the [Clean Our Plate](myv_program) project?
+    - What is the [Clean Our Plate](myv_program) project all about?
+
+- intent: inquire_ly_program
+  examples: |
+    - What is the [Love Yourself](myv_program) project?
+    - Can you explain to me about the [Love Yourself](myv_program) project?
+    - Can you give me an overview of the [Love Yourself](myv_program) project?
+    - What is the [Love Yourself](myv_program) project all about?
+
+- intent: inquire_speakup_contact
+  examples: |
+    - Can you give me the contact information of the [Speak Up](myv_program) organizing committee?
+    - I would like to ask about the contact details for the [Speak Up](myv_program) organizing committee.
+    - Can I know how to contact the [Speak Up](myv_program) organizing committee?
+    - Can you provide me with the contact information of the organizing team of [Speak Up](myv_program)?
+    - How can I reach out to the organizing committee of [Speak Up](myv_program)?
+    - I would like to ask about the contact information for the [Speak Up](myv_program) committee.
+
+- intent: inquire_cop_contact
+  examples: |
+    - Can you give me the contact information of the [Clean Our Plate](myv_program) organizing committee?
+    - I would like to ask about the contact details for the [Clean Our Plate](myv_program) organizing committee.
+    - Can I know how to contact the [Clean Our Plate](myv_program) organizing committee?
+    - Can you provide me with the contact information of the organizing team of [Clean Our Plate](myv_program)?
+    - How can I reach out to the organizing committee of [Clean Our Plate](myv_program)?
+    - I would like to ask about the contact information for the [Clean Our Plate](myv_program) committee.
+
+- intent: inquire_ly_contact
+  examples: |
+    - Can you give me the contact information of the [Love Yourself](myv_program) organizing committee?
+    - I would like to ask about the contact details for the [Love Yourself](myv_program) organizing committee.
+    - Can I know how to contact the [Love Yourself](myv_program) organizing committee?
+    - Can you provide me with the contact information of the organizing team of [Love Yourself](myv_program)?
+    - How can I reach out to the organizing committee of [Love Yourself](myv_program)?
+    - I would like to ask about the contact information for the [Love Yourself](myv_program) committee.
 
 - regex: country
   examples: |

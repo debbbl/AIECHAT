@@ -1,26 +1,9 @@
 # This files contains your custom actions which can be used to run
-# custom Python code.
-#
-
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
-from typing import Any, Text, Dict, List
+from typing import Any, Text, Dict, List, Optional
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, EventType
+from rasa_sdk.events import UserUtteranceReverted, SessionStarted, ActionExecuted, EventType, SlotSet
 import json
-import re
-from rasa_sdk.events import SlotSet
 from datetime import datetime
 
 
@@ -45,7 +28,7 @@ class ActionAnswerQuestion(Action):
                     dispatcher.utter_message(text=response)
                     return []
 
-        dispatcher.utter_message(text="I'm sorry, I don't have the answer to that question.")
+        dispatcher.utter_message(text="I am sorry, I don't have an answer for that. \nPlease refer to this link for more information : https://beacons.ai/aiesecinum/youthspeakforum")
         return []
 
 class ActionWelcome(Action):
@@ -75,7 +58,6 @@ class ActionSessionStart(Action):
         events.append(ActionExecuted("action_listen"))
 
         return events
-
 
 class ActionSearchPrograms(Action):
     def name(self) -> Text:
@@ -122,22 +104,125 @@ class ActionSearchPrograms(Action):
         return []
 
 class ActionShowProgramDetails(Action):
+
     def name(self) -> Text:
         return "action_show_program_details"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        suggested_program = tracker.get_slot("suggested_program")
+    def fetch_data(self) -> List[Dict[Text, Any]]:
+        with open('data/global_volunteer.json') as f:
+            data = json.load(f)
+        return data
 
-        if suggested_program:
-            response = f"Program Name: {suggested_program['Name']}\n\nKey Activities:\n{', '.join(suggested_program['Key Activities'])}\n\nObjectives: {suggested_program['Objectives']}\n\nInterests: {suggested_program['Interests']}\n\nTimeline: {suggested_program['Timeline']}\n\nBenefits: {suggested_program['Benefits']}\n\nSkills: {suggested_program['Skills']}\n\nAccommodation: {suggested_program['Accommodation']}\n\nMeal: {suggested_program['Meal']}"
-            dispatcher.utter_message(text=response)
+    def get_program_details(self, program: Text, country: Optional[Text] = None) -> Dict[Text, Any]:
+        data = self.fetch_data()
+        program_details = []
+        countries = set()
+
+        for entry in data:
+            if entry['Name'].lower() == program.lower():
+                countries.add(entry['Country'])
+                if country and entry['Country'].lower() == country.lower():
+                    program_details.append(entry)
+
+        return {
+            "program_details": program_details,
+            "countries": list(countries)
+        }
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        program = tracker.get_slot('program')
+        country = tracker.get_slot('country')
+
+        print(f"program: ", program)
+        print(f"country: ", country)
+
+        if not program:
+            dispatcher.utter_message(text="Please provide the program name.")
+            return []
+
+        details = self.get_program_details(program, country)
+
+        # Update the country slot if the user provided a country
+        provided_country = next(tracker.get_latest_entity_values("country"), None)
+        if provided_country:
+            country = provided_country
+
+        if not country:  # If country is not provided
+            if details['countries']:
+                dispatcher.utter_message(
+                    text=f"The program {program} is available in the following countries: {', '.join(details['countries'])}. "
+                         "Please specify the country you are interested in."
+                )
+            else:
+                dispatcher.utter_message(text=f"No details found for the program {program}.")
+            return [SlotSet("country", None)]  # Clear the country slot
+
+        if details['program_details']:
+            for detail in details['program_details']:
+                response = (
+                    f"Program Name: {detail['Name']}\n"
+                    f"Country: {detail['Country']}\n"
+                    f"Key Activities: {', '.join(detail['Key Activities'])}\n"
+                    f"Objectives: {detail['Objectives']}\n"
+                    f"Interests: {', '.join(detail['Interests'])}\n"
+                    f"Timeline: {detail['Timeline']}"
+                )
+
+                dispatcher.utter_message(text=response)
+            return [SlotSet("country", None)]  # Set the country slot
+
         else:
-            dispatcher.utter_message(text="No suggested program available.")
+            dispatcher.utter_message(text=f"No details found for the program {program} in the country {country}.")
+            return [SlotSet("country", None)]  # Clear the country slot
 
         return []
 
-# def parse_month(month_str):
-#     return datetime.strptime(month_str, "%B").month
+
+class ActionListCountriesAvailable(Action):
+    def name(self) -> Text:
+        return "action_list_countries_available"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        with open('data/global_volunteer.json') as f:
+            data = json.load(f)
+
+        countries = list(set(entry['Country'] for entry in data))
+
+        formatted_countries = "\n".join([f"- {country}" for country in countries])
+
+        dispatcher.utter_message(text=f"The available countries for volunteering are:\n{formatted_countries}")
+        return []
+
+class ActionListVolunteerPrograms(Action):
+    def name(self) -> Text:
+        return "action_list_volunteer_programs"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        country = tracker.get_slot('country')
+        with open('data/global_volunteer.json') as f:
+            data = json.load(f)
+
+        programs = [entry['Name'] for entry in data if entry['Country'] == country]
+
+        if programs:
+            program_list = "\n- ".join(programs)
+            message = (
+                f"The volunteer programs available in {country} are:\n\n"
+                f"- {program_list}"
+            )
+        else:
+            message = f"No volunteer programs found in {country}."
+
+        dispatcher.utter_message(text=message)
+        return []
 
 def program_matches_preferences(program, country, start_month, end_month):
     match = True
@@ -153,7 +238,6 @@ def program_matches_preferences(program, country, start_month, end_month):
             # Handle cases where timeline data doesn't match expected format
             match = False
     return match
-
 
 class ActionAskMeal(Action):
     def name(self) -> Text:
@@ -214,7 +298,6 @@ class ActionAskInterests(Action):
         dispatcher.utter_message(text="What are your interests?")
         return []
 
-
 class ActionAskTimeline(Action):
     def name(self) -> Text:
         return "action_ask_timeline"
@@ -222,3 +305,11 @@ class ActionAskTimeline(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         dispatcher.utter_message(text="When are you available to volunteer?")
         return []
+
+class ActionDefaultFallback(Action):
+    def name(self):
+        return "action_default_fallback"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(template="utter_default")
+        return [UserUtteranceReverted()]

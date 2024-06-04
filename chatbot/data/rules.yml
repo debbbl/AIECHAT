@@ -63,26 +63,121 @@ rules:
     - action: action_search_programs
 
 - rule: Trigger action for showing program details
+  condition:
+    - slot_was_set:
+        - program
+        - country
   steps:
-  - intent: inquire_program_details
-  - action: action_show_program_details
+    - intent: inquire_program_details
+    - action: action_show_program_details
+
+- rule: List countries available for volunteering
+  steps:
+  - intent: inquire_countries_available
+  - action: action_list_countries_available
+
+- rule: List volunteer programs available in a specific country
+  steps:
+  - intent: inquire_volunteer_programs
+    entities:
+      - country
+  - action: action_list_volunteer_programs
 
 - rule: Respond to meal inquiry
   steps:
-  - intent: inquire_meal
-    entities:
-      - program
-  - action: action_ask_meal
+    - intent: inquire_meal
+      entities:
+        - program
+    - action: action_ask_meal
 
 - rule: Respond to accommodation inquiry
   steps:
-  - intent: inquire_accommodation
+    - intent: inquire_accommodation
+      entities:
+        - program
+        - country
+    - action: action_ask_accommodation
+
+- rule: Handle fallback
+  steps:
+    - intent: nlu_fallback
+    - action: action_default_fallback
+
+- rule: Respond to Malaysian Youth Volunteer intake process
+  steps:
+  - intent: inquire_intake_process
     entities:
-      - program
-  - action: action_ask_accommodation
+      - myv_program
+  - action: utter_intake_process
 
+- rule: Respond to Speak Up key activities
+  steps:
+  - intent: inquire_speakup_activities
+    entities:
+      - myv_program: "Speak Up"
+  - action: utter_speak_up_activities
 
+- rule: Respond to Clean Our Plate key activities
+  steps:
+    - intent: inquire_cop_activities
+      entities:
+        - myv_program: "Clean Our Plate"
+    - action: utter_clean_our_plate_activities
 
+- rule: Respond to Love Yourself key activities
+  steps:
+    - intent: inquire_ly_activities
+      entities:
+        - myv_program: "Love Yourself"
+    - action: utter_love_yourself_activities
 
+- rule: Respond to program admin fee
+  steps:
+  - intent: inquire_program_fee
+    entities:
+      - myv_program
+  - action: utter_program_fee
+
+- rule: Respond to Speak Up brief description
+  steps:
+  - intent: inquire_speakup_program
+    entities:
+      - myv_program: "Speak Up"
+  - action: utter_speak_up
+
+- rule: Respond to Clean Our Plate brief description
+  steps:
+  - intent: inquire_cop_program
+    entities:
+      - myv_program: "Clean Our Plate"
+  - action: utter_clean_our_plate
+
+- rule: Respond to Love Yourself brief description
+  steps:
+  - intent: inquire_ly_program
+    entities:
+      - myv_program: "Love Yourself"
+  - action: utter_love_yourself
+
+- rule: Respond to Speak Up contact details
+  steps:
+  - intent: inquire_speakup_contact
+    entities:
+      - myv_program: "Speak Up"
+  - action: utter_speak_up_contact
+
+- rule: Respond to Clean Our Plate contact details
+  steps:
+  - intent: inquire_cop_contact
+    entities:
+      - myv_program: "Clean Our Plate"
+  - action: utter_clean_our_plate_contact
+
+- rule: Respond to Love Yourself contact details
+  steps:
+  - intent: inquire_ly_contact
+    entities:
+      - myv_program: "Love Yourself"
+  - action: utter_love_yourself_contact
 
 
