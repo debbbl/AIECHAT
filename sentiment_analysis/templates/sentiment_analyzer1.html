@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Candidate Feedback Analyzer</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script>
         plot = false;
         plot1 = false;
@@ -46,9 +46,8 @@
     <div class="container">
         <div class="sidebar">
             <h2></h2>
-            <a href="../../chatbot/html/index.html">AIECHAT</a>
-            <a href="sentiment_analyzer.html">Sentiment Analysis</a>
-            <a href="#">Sentiment Analysis</a>
+            <!-- <a href="http://localhost:5501/chatbot/html/index.html"">AIECHAT</a>
+            <a href="http://localhost:5000/">Sentiment Analysis</a> -->
         </div>   
         <div class="main-content">
         <div class="item1">
@@ -230,7 +229,7 @@
 
         </div>
         <button class="menu-button" id="menuButton">
-            <img src="../images/menu-icon.png" alt="Menu">
+            <img src="{{ url_for('static', filename='images/menu-icon.png') }}" alt="Menu">
         </button>
     </div>
         {% endif %}

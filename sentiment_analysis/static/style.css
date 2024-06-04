@@ -254,6 +254,7 @@ th {
     padding: 10px;
     border-radius: 5px;
     transition: background 0.3s;
+    font-weight: 1.0rem;
 }
 
 .sidebar a:hover {
