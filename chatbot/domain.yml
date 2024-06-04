@@ -20,10 +20,23 @@ intents:
   - inform_accommodation
   - inform_meal
   - inform_country_and_timeline
-  - choose_program
   - inquire_program_details
   - inquire_accommodation
   - inquire_meal
+  - provide_country
+  - inquire_countries_available
+  - inquire_volunteer_programs
+  - inquire_intake_process
+  - inquire_cop_activities
+  - inquire_speakup_activities
+  - inquire_ly_activities
+  - inquire_program_fee
+  - inquire_speakup_program
+  - inquire_cop_program
+  - inquire_ly_program
+  - inquire_speakup_contact
+  - inquire_cop_contact
+  - inquire_ly_contact
 
 entities:
   - country
@@ -35,6 +48,7 @@ entities:
   - accommodation
   - meal
   - program
+  - myv_program
 
 slots:
   suggested_program:
@@ -66,12 +80,12 @@ slots:
     mappings:
       - type: from_entity
         entity: interests
-  benefits:
+  program:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: benefits
+        entity: program
   skills:
     type: text
     influence_conversation: true
@@ -104,6 +118,9 @@ actions:
   - action_ask_accommodation
   - action_ask_meal
   - action_show_program_details
+  - action_default_fallback
+  - action_list_countries_available
+  - action_list_volunteer_programs
 
 responses:
   utter_welcome:
@@ -157,7 +174,49 @@ responses:
     - text: "You need to submit the following documents: [list of documents]."
   utter_program_details_not_found:
     - text: "Program details not found."
+  utter_default:
+    - text: "I am sorry, I don't have an answer for that. \nPlease refer to this link for more information : https://beacons.ai/aiesecinum/youthspeakforum"
+
+  utter_intake_process:
+    - text: "1) Apply in application form provided by AIESEC for the virtual volunteer opportunity.\n
+             2) Attend and pass interview assessment conducted by the organizing committee of the project.\n
+             3) Approved to become official virtual volunteer through submitting virtual volunteer fees and approval documents.\n
+             4) Attend preparation webinar and receive preparation booklet before starting the volunteering experience.\n
+             5) Commit to volunteering activities for 4 weeks and complete the tasks given everyday."
+
+  utter_speak_up_activities:
+    - text: "The key activities include Sales Marketing Workshop, Figma Workshop, Project Management Workshop, STEAM Competition, Volunteering, Global Village, LEAD Space and Site visit."
+
+  utter_clean_our_plate_activities:
+    - text: "The key activities include Train the Trainer(TtT), Home Composting Workshop, Home Gardening Workshop, Zero Waste Talk, Eco-Enzyme Making, Food Planning, Food Rescuer, Jungle Walk and Biodiversity Conservation Talk, Surplus Food Sorting,
+             Food Distribution, Waste Management Lab Site Visit, Pitching Competition, Workshop Coordination, School Exhibition, LEAD Space and International Youth Engagement. "
+
+  utter_love_yourself_activities:
+    - text: "The key activities include Train the Trainer(TtT), Drama Therapy, Hand Sign Language, Training from counselor, Creative Writing, LEAD Spaces, Emo Mastery Workshop, Revealing You Workshop, Mental Health Awareness Campaign and
+             Heart Harbor Workshop."
+
+  utter_program_fee:
+  - text: "The total volunteer admin fee is RM 200."
+
+  utter_speak_up:
+  - text: "Speak Up is a project designed to empower young people to share their ideas, thoughts, and opinions on a variety of topics. It focuses on issues of social importance, leadership, and global challenges."
+
+  utter_clean_our_plate:
+  - text: "Clean Our Plate is a project that aims to address the issue of food waste and promote sustainable consumption practices. You can make a positive impact on the environment by minimizing waste and adopting eco-friendly practices by joining us !"
+
+  utter_love_yourself:
+  - text: "Love Yourself is a heartfelt project aimed at increasing mental well-being awareness and accessibility of psychological support for the disabled community. Our mission is to ensure that everyone, regardless of ability, has the resources and support they need to prioritize their mental health and thrive. "
+
+  utter_speak_up_contact:
+  - text: "Feel free to reach out to Guo Chun Yu, our Local Committee Vice President of iGV, by calling +60196441404 or emailing chunyu.guo@aiesec.net. You can also get in touch with Rachel Teoh, the Project Director of Speak Up, by calling +60 177149288 or emailing rachelteoh@aiesec.net. They would be happy to help!"
+
+  utter_clean_our_plate_contact:
+  - text: "You can reach out to Guo Chun Yu, our Local Committee Vice President of iGV, by calling +60196441404 or emailing chunyu.guo@aiesec.net. Besides, you can contact Joyce Chong E-Zin, the Project Director of Clean Our Plate, at +60166368255 or by emailing joycexez18@aiesec.net. They are both happy to help!"
+
+  utter_love_yourself_contact:
+  - text: "Feel free to reach out to Guo Chun Yu, our Local Committee Vice President of iGV at +60196441404 or via email at chunyu.guo@aiesec.net. You can also contact Gan Wen Jing, the Project Director of Clean Our Plate, at +6018-2840641 or by emailing wenjing@aiesec.net. They are both happy to assist!"
+
 session_config:
-  session_expiration_time: 60
+  session_expiration_time: 3600
   carry_over_slots_to_new_session: true
   initial_action: action_session_start
