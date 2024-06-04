@@ -1,0 +1,168 @@
+version: "3.1"
+
+stories:
+
+- story: User starts conversation
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: User asks about AIESEC
+  steps:
+  - intent: faq_about_aiesec
+  - action: action_answer_question
+
+- story: User asks how to apply
+  steps:
+  - intent: faq_how_to_apply
+  - action: action_answer_question
+
+- story: Answer FAQ about applying for volunteering
+  steps:
+  - intent: faq_apply_volunteering
+  - action: action_answer_question
+
+- story: Answer FAQ about Global Volunteer requirements
+  steps:
+  - intent: program_details
+  - action: action_answer_question
+
+- story: User provides country and timeline
+  steps:
+  - intent: inform_country_and_timeline
+    entities:
+      - country
+      - start_month
+      - end_month
+  - action: action_search_programs
+
+- story: User provides country and is asked for timeline and interests
+  steps:
+  - intent: inform_country
+    entities:
+      - country
+  - action: action_ask_timeline
+  - intent: inform_timeline
+    entities:
+      - start_month
+      - end_month
+  - action: action_search_programs
+
+- story: User provides timeline and is asked for country and interests
+  steps:
+  - intent: inform_timeline
+    entities:
+      - start_month
+      - end_month
+  - action: action_ask_country
+  - intent: inform_country
+    entities:
+      - country
+  - action: action_search_programs
+
+- story: User asks for program details
+  steps:
+  - intent: inquire_program_details
+    entities:
+      - program
+  - action: action_show_program_details
+
+- story: User asks about accommodation
+  steps:
+  - intent: inquire_accommodation
+    entities:
+      - program
+  - action: action_ask_accommodation
+
+- story: User asks about meal arrangements
+  steps:
+  - intent: inquire_meal
+    entities:
+      - program
+  - action: action_ask_meal
+
+- story : User asks Malaysian Youth Volunteer intake process 
+  steps:
+  - intent: inquire_intake_process
+    entities:
+       - myv_program 
+  - action : utter_intake_process
+
+- story: User asks about Speak Up key activities
+  steps:
+  - intent: inquire_speak_up_activities
+  - action: utter_speak_up_activities 
+
+- story: User asks about Clean Our Plate key activities
+  steps:
+  - intent: inquire_clean_our_plate_activities
+  - action: utter_clean_our_plate_activities 
+
+- story: User asks about Love Yourself key activities
+  steps:
+  - intent: inquire_love_yourself_activities
+  - action: utter_love_yourself_activities 
+
+- story: User asks about program admin fee
+  steps:
+  - intent: inquire_program_fee
+  - entities:
+       - myv_program 
+  - action: utter_program_fee
+
+- story: User asks about Speak Up 
+  steps:
+  - intent: inquire_speak_up
+  - action: utter_speak_up
+
+- story: User asks about Clean Our Plate
+  steps:
+  - intent: inquire_clean_our_plate
+  - action: utter_clean_our_plate
+
+- story: User asks about Love Yourself
+  steps:
+  - intent: inquire_love_yourself
+  - action: utter_love_yourself
+
+- story: User asks about Speak Up contact details
+  steps:
+  - intent: inquire_speak_up_contact
+  - action: utter_speak_up_contact
+
+- story: User asks about Clean Our Plate contact details
+  steps:
+  - intent: inquire_clean_our_plate_contact
+  - action: utter_clean_our_plate_contact
+
+- story: User asks about Love Yourself contact details
+  steps:
+  - intent: inquire_love_yourself_contact
+  - action: utter_love_yourself_contact

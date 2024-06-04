@@ -30,12 +30,27 @@
                 document.getElementById("plot1").style.cssText = "display:none";
             }
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuButton = document.getElementById("menuButton");
+            const sidebar = document.querySelector(".sidebar");
+            menuButton.addEventListener("click", () => {
+                sidebar.classList.toggle("sidebar-open");
+            });
+        });
     </script>
 </head>
 
 <body>
 
     <div class="container">
+        <div class="sidebar">
+            <h2></h2>
+            <a href="../../chatbot/html/index.html">AIECHAT</a>
+            <a href="sentiment_analyzer.html">Sentiment Analysis</a>
+            <a href="#">Sentiment Analysis</a>
+        </div>   
+        <div class="main-content">
         <div class="item1">
             <h1>
                 Candidate Feedback Analyzer Tool
@@ -214,7 +229,10 @@
             </div>
 
         </div>
-
+        <button class="menu-button" id="menuButton">
+            <img src="../images/menu-icon.png" alt="Menu">
+        </button>
+    </div>
         {% endif %}
 
 
