@@ -1,0 +1,18 @@
+[
+  {
+    "name": "country",
+    "pattern": "\\b(Thailand|Cambodia|Vietnam|Taiwan|Sri Lanka|India|Indonesia|Nepal)\\b"
+  },
+  {
+    "name": "myv_program",
+    "pattern": "\\b(Clean Our Plate|Love Yourself|Speak Up)\\b"
+  },
+  {
+    "name": "country",
+    "pattern": "(\\bThailand\\b|\\bCambodia\\b|\\bVietnam\\b|\\bTaiwan\\b|\\bSri\\ Lanka\\b|\\bIndia\\b|\\bIndonesia\\b|\\bNepal\\b)"
+  },
+  {
+    "name": "myv_program",
+    "pattern": "(\\bClean\\ Our\\ Plate\\b|\\bLove\\ Yourself\\b|\\bSpeak\\ Up\\b)"
+  }
+]

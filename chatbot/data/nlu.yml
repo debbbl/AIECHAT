@@ -96,15 +96,27 @@ nlu:
     - Tell me about AIESEC.
     - What does AIESEC do?
 
+- intent: GV
+  examples: |
+    - What is [Global Volunteer](project)
+    - [Global Volunteer](project)
+    - tell me about [Global Volunteer](project)
+
+- intent: inquire_myv
+  examples: |
+    - [Malaysia Youth Volunteer](project)
+    - What is [Malaysia Youth Volunteer](project)?
+    - tell me about [Malaysia Youth Volunteer](project)
+
+- intent: inquire_aiesec_project
+  examples: |
+    - AIESEC programs
+    - What are the volunteer projects offered by AIESEC?
+
 - intent: faq_how_to_apply
   examples: |
     - How can I apply for a volunteering program?
     - What's the process to apply for a program?
-
-- intent: faq_global_volunteer_requirements
-  examples: |
-    - What are the requirements for the Global Volunteer program?
-    - Can you tell me about the requirements for the Global Volunteer program?
 
 - intent: faq_apply_volunteering
   examples: |
@@ -129,6 +141,59 @@ nlu:
     - Volunteer opportunities in [India](country)
     - Any programs available in [Indonesia](country)?
     - I'm looking for volunteering opportunities in [Nepal](country)
+
+- intent: ask_flight
+  examples: |
+    - Do I need to book flight ticket myself?
+    - Do I need to book flight ticket myself?
+    - Who is responsible for booking the flight tickets?
+    - Should I arrange my own travel to the volunteer location?
+    - Is the flight ticket included in the program fee?
+    - Will the organization book the flight tickets for me?
+    - Do I need to buy my own plane ticket?
+    - Are flight expenses covered by the program?
+    - Will someone assist me with booking my flight?
+    - Do I have to pay for my own flight?
+    - Is the airfare included in the volunteer package?
+
+- intent: ask_join_gv
+  examples: |
+    - Why should I join [Global Volunteer](project)?
+    - What are the benefits of joining [Global Volunteer](project)?
+    - How can joining [Global Volunteer](project) help me?
+    - Why is [Global Volunteer](project) a good choice?
+    - What makes [Global Volunteer](project) unique?
+    - What are the advantages of participating in [Global Volunteer](project)?
+    - Can you tell me why I should consider [Global Volunteer](project)?
+    - Why is Global Volunteer worth joining?
+    - What do I gain from being a part of [Global Volunteer](project)?
+    - Why should I choose [Global Volunteer](project) over other programs?
+
+- intent: ask_budget
+  examples: |
+    - How much will be the total budget that I have to prepare?
+    - What is the estimated cost for the program?
+    - How much money should I budget for this volunteer experience?
+    - Can you give me an idea of the total expenses?
+    - What is the financial requirement for joining?
+    - How much should I expect to spend in total?
+    - What is the overall cost involved?
+    - Can you break down the budget I need?
+    - How much will the entire program cost me?
+    - What is the expected budget for participating?
+
+- intent: ask_requirements
+  examples: |
+    - What are the requirements to join [Global Volunteer](project)?
+    - What qualifications do I need for [Global Volunteer](project)?
+    - Are there any prerequisites for joining [Global Volunteer](project)?
+    - What do I need to be eligible for [Global Volunteer](project)?
+    - What are the criteria for joining [Global Volunteer](project)?
+    - Do I need any specific skills for [Global Volunteer](project)?
+    - What are the application requirements for [Global Volunteer](project)?
+    - Are there any eligibility conditions for [Global Volunteer](project)?
+    - What qualifications are necessary for [Global Volunteer](project)?
+    - What are the basic requirements for [Global Volunteer](project)?
 
 - intent: inform_timeline
   examples: |
@@ -297,6 +362,7 @@ nlu:
 - intent: inquire_speakup_program
   examples: |
     - What is the [Speak Up](myv_program) project?
+    - [Speak Up](myv_program)
     - Can you explain to me about the [Speak Up](myv_program) project?
     - Can you give me an overview of the [Speak Up](myv_program) project?
     - What is the [Speak Up](myv_program) project all about?
@@ -304,6 +370,7 @@ nlu:
 - intent: inquire_cop_program
   examples: |
     - What is the [Clean Our Plate](myv_program) project?
+    - [Clean Our Plate](myv_program)
     - Can you explain to me about the [Clean Our Plate](myv_program) project?
     - Can you give me an overview of the [Clean Our Plate](myv_program) project?
     - What is the [Clean Our Plate](myv_program) project all about?
@@ -311,6 +378,7 @@ nlu:
 - intent: inquire_ly_program
   examples: |
     - What is the [Love Yourself](myv_program) project?
+    - [Love Yourself](myv_program)
     - Can you explain to me about the [Love Yourself](myv_program) project?
     - Can you give me an overview of the [Love Yourself](myv_program) project?
     - What is the [Love Yourself](myv_program) project all about?

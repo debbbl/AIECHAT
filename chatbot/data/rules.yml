@@ -22,11 +22,6 @@ rules:
   - intent: faq_how_to_apply
   - action: action_answer_question
 
-- rule: Respond to FAQ about global volunteer recruitment
-  steps:
-  - intent: faq_global_volunteer_requirements
-  - action: action_answer_question
-
 - rule: Activate the welcome message at session start
   steps:
     - action: action_session_start
@@ -130,6 +125,54 @@ rules:
       entities:
         - myv_program: "Love Yourself"
     - action: utter_love_yourself_activities
+
+- rule: Respond to program admin fee
+  steps:
+  - intent: inquire_program_fee
+    entities:
+      - myv_program
+  - action: utter_program_fee
+
+- rule: Respond to flight inquiry
+  steps:
+  - intent: ask_flight
+  - action: utter_ask_flight
+
+- rule: Respond to joining Global Volunteer
+  steps:
+  - intent: ask_join_gv
+    entities:
+      - project: "Global Volunteer"
+  - action: utter_join_gv
+
+- rule: Respond to budget inquiry
+  steps:
+  - intent: ask_budget
+  - action: utter_budget
+
+- rule: Respond to Global Volunteer requirements
+  steps:
+  - intent: ask_requirements
+    entities:
+      - project: "Global Volunteer"
+  - action: utter_gv_requirements
+
+- rule: Respond to AIESEC project inquiry
+  steps:
+  - intent: inquire_aiesec_project
+  - action: utter_aiesec_project
+
+- rule: Respond to MYV inquiry
+  steps:
+  - intent: inquire_myv
+    entities:
+      - project: "Malaysia Youth Volunteer"
+  - action: utter_myv
+
+- rule: Respond to Global Volunteer inquiry
+  steps:
+  - intent: GV
+  - action: utter_what_is_gv
 
 - rule: Respond to program admin fee
   steps:
