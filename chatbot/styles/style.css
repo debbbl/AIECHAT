@@ -1,7 +1,7 @@
 html, body {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Oswald', sans-serif;
     background-color: #E0E7FF;
     overflow-x: hidden; /* Hide horizontal scrollbar */
 }
@@ -36,10 +36,12 @@ html, body {
     z-index: 1000; /* Ensure sidebar is above other content */
     visibility: hidden; /* Completely hidden initially */
     transition: left 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Animation for sidebar movement and visibility */
+    font-family: 'Oswald', sans-serif; /* New text style */
+    font-size: 17px; /* New text size */
 }
 
 .sidebar h2 {
-    margin-top: 0;
+    margin-top: 30px;
 }
 
 .sidebar a {
@@ -67,44 +69,17 @@ html, body {
 }
 
 .menu-button img {
-    width: 30px;
-    height: 30px;
-    opacity: 0.8; /* Set initial opacity */
-    transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out; /* Transition for opacity and filter */
-    filter: brightness(0) invert(1); /* Make the image white */
+    width: 35px;
+    height: 35px;
+    opacity: 0.8; 
+    transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out; 
+    filter: brightness(0) invert(1) grayscale(1) contrast(20%); 
 }
 
 .menu-button img:hover {
-    opacity: 0.6; /* Pale white on hover */
+    opacity: 0.6; 
 }
 
-/* Sidebar open state */
-.sidebar-open {
-    left: 0;
-    visibility: visible;
-}
-
-.menu-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1001; /* Ensure button is above the sidebar */
-}
-
-.menu-button img {
-    width: 30px;
-    height: 30px;
-    opacity: 0.8; /* Set initial opacity */
-    transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out; /* Transition for opacity and filter */
-    filter: brightness(0) invert(1); /* Make the image white */
-}
-
-.menu-button img:hover {
-    opacity: 0.6; /* Pale white on hover */
-}
 
 /* Sidebar open state */
 .sidebar-open {
