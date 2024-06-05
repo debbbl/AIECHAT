@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <title>Candidate Feedback Analyzer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script>
@@ -46,10 +47,13 @@
     <div class="container">
         <div class="sidebar">
             <h2></h2>
-            <!-- <a href="http://localhost:5501/chatbot/html/index.html"">AIECHAT</a>
-            <a href="http://localhost:5000/">Sentiment Analysis</a> -->
+            <a href="http://localhost:5501/chatbot/html/index.html"">AIECHAT</a>
+            <a href="http://localhost:5000/">Sentiment Analysis</a>
         </div>   
         <div class="main-content">
+            <button class="menu-button" id="menuButton">
+                <img src="{{ url_for('static', filename='images/menu-icon.png') }}" alt="Menu">
+            </button>
         <div class="item1">
             <h1>
                 Candidate Feedback Analyzer Tool
