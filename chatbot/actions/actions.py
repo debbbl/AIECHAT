@@ -101,7 +101,7 @@ class ActionSearchPrograms(Action):
         else:
             dispatcher.utter_message(text="I couldn't find any programs matching your preferences.")
 
-        return []
+        return [SlotSet("country", None)]
 
 class ActionShowProgramDetails(Action):
 

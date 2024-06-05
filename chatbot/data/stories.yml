@@ -49,11 +49,6 @@ stories:
   - intent: faq_apply_volunteering
   - action: action_answer_question
 
-- story: Answer FAQ about Global Volunteer requirements
-  steps:
-  - intent: program_details
-  - action: action_answer_question
-
 - story: User provides country and timeline
   steps:
   - intent: inform_country_and_timeline
@@ -208,6 +203,50 @@ stories:
     entities:
        - myv_program: "Love Yourself"
   - action: utter_love_yourself_contact
+
+- story: User asks about flight booking
+  steps:
+  - intent: ask_flight
+  - action: utter_ask_flight
+
+- story: User asks about joining Global Volunteer
+  steps:
+  - intent: ask_join_gv
+    entities:
+      - project: "Global Volunteer"
+  - action: utter_join_gv
+
+- story: User asks about budget
+  steps:
+  - intent: ask_budget
+  - action: utter_budget
+
+- story: User asks about Global Volunteer requirements
+  steps:
+  - intent: ask_requirements
+    entities:
+      - project: "Global Volunteer"
+  - action: utter_gv_requirements
+
+- story: User inquires about AIESEC project
+  steps:
+  - intent: inquire_aiesec_project
+  - action: utter_aiesec_project
+
+- story: User inquires about MYV
+  steps:
+  - intent: inquire_myv
+    entities:
+      - project: "Malaysia Youth Volunteer"
+  - action: utter_myv
+
+- story: User asks what is Global Volunteer
+  steps:
+  - intent: gv
+    entities:
+      - project: "Global Volunteer"
+  - action: utter_what_is_gv
+
 
 
 

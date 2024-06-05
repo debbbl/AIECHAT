@@ -10,7 +10,6 @@ intents:
   - bot_challenge
   - faq_about_aiesec
   - faq_how_to_apply
-  - faq_global_volunteer_requirements
   - faq_apply_volunteering
   - inform_country
   - inform_timeline
@@ -37,6 +36,13 @@ intents:
   - inquire_speakup_contact
   - inquire_cop_contact
   - inquire_ly_contact
+  - inquire_aiesec_project
+  - inquire_myv
+  - GV
+  - ask_flight
+  - ask_join_gv
+  - ask_budget
+  - ask_requirements
 
 entities:
   - country
@@ -49,6 +55,7 @@ entities:
   - meal
   - program
   - myv_program
+  - project
 
 slots:
   suggested_program:
@@ -145,6 +152,17 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  utter_aiesec_project:
+  - text: "Global Volunteer\n
+          Malaysia Youth Volunteer \n
+          -- Clean Our Plate\n
+          -- Speak Up\n
+          -- Love Yourself"
+
+  utter_myv:
+  - text: "Malaysian Youth Volunteer (MYV) is a program to empower Youth to take ownership of their personal development and take action towards solving social issues in the community around them through Sustainable Development Goals aligned virtual volunteering projects.\n
+          It includes programs such as Clean Our Plate, Speak Up and Love Yourslef"
+
   utter_faq_about_aiesec:
   - text: "AIESEC is a global platform for young people to explore and develop their leadership potential. It is a non-political, independent, not-for-profit organization run by students and recent graduates of institutions of higher education."
 
@@ -166,8 +184,9 @@ responses:
     - text: "What skills do you want to develop or utilize?"
   utter_ask_accommodation:
     - text: "Do you require accommodation?"
-  utter_ask_meal:
-    - text: "Do you need meals provided during the program?"
+  utter_ask_flight:
+    - text: "• Yes, you will have to book your own flight tickets, 
+    apply for visa and purchase travel insurance by yourself after getting approved by a project."
   utter_suggest_programs:
     - text: "Based on your preferences, here are some suitable programs: {program_list}"
   utter_faq_documents_required:
@@ -175,15 +194,33 @@ responses:
   utter_program_details_not_found:
     - text: "Program details not found."
   utter_default:
-    - text: "I am sorry, I don't have an answer for that. \nPlease refer to this link for more information : https://beacons.ai/aiesecinum/youthspeakforum"
-
+    - text: "I am sorry, I don't have an answer for that. 
+    \nPlease refer to this link for more information : https://beacons.ai/aiesecinum/youthspeakforum"
+  utter_budget:
+    - text: "The estimated expenses are varies depending on the countries and projects that you will be going, you may take into consideration the project fees, administration
+      fee, visa, flight tickets, insurance and living expenses in that countries for 6 weeks. Let’s apply to get more information from us."
+  utter_gv_requirements:
+    - text: "1) Commit to a 6 weeks duration for your project (minimum duration) .\n
+             2) Be aged 18 to 30. \n
+             3) Malaysians or non-Malaysians. \n
+             4) Pay the administrative fee of RM800, purchase your insurance and travel ticket. \n
+             5) Be responsive to all AIESEC communications and attend preparation spaces before departure.
+             6) Be ready to make a social impact and develop yourself like never before."
+  utter_join_gv:
+    - text: "Global Volunteer program provide a platform for the youth to develop their leadership through a volunteering project contributing to the Sustainable Development
+            Goals. You will be able to experience a new culture and step out of your comfort zone to live in a challenging environment which you will develop your leadership
+            competencies, personal skills and increase your language competencies."
   utter_intake_process:
     - text: "1) Apply in application form provided by AIESEC for the virtual volunteer opportunity.\n
              2) Attend and pass interview assessment conducted by the organizing committee of the project.\n
              3) Approved to become official virtual volunteer through submitting virtual volunteer fees and approval documents.\n
              4) Attend preparation webinar and receive preparation booklet before starting the volunteering experience.\n
              5) Commit to volunteering activities for 4 weeks and complete the tasks given everyday."
-
+  utter_what_is_gv:
+    - text: "Global Volunteer is a 6 weeks cross-cultural volunteer experience for
+            youth in Malaysia who seek to develop themselves and the world. You
+            expand your global network and learn to communicate effectively,
+            while contributing to something that matters"
   utter_speak_up_activities:
     - text: "The key activities include Sales Marketing Workshop, Figma Workshop, Project Management Workshop, STEAM Competition, Volunteering, Global Village, LEAD Space and Site visit."
 
