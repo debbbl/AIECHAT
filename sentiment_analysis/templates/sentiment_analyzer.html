@@ -62,19 +62,31 @@
         const fileBtn = document.getElementById("file");
         const customBtn = document.getElementById("upload-button");
         const customTxt = document.getElementById("custom-msg");
+
         customBtn.addEventListener("click", function() {
             fileBtn.click();
         });
-        file.addEventListener("change", function() {
-            if (fileBtn.value) {
-                customTxt.innerHTML = fileBtn.value.match(/[\/\\]([\w\d\s\.\~\(\)]+)$/)[1];
+
+        // fileBtn.addEventListener("change", function() {
+        //     if (fileBtn.value) {
+        //         customTxt.innerHTML = fileBtn.value.match(/[\/\\]([\w\d\s\.\~\(\)]+)$/)[1];
+        //     } else {
+        //         customTxt.innerHTML = "No file chosen, yet.";
+        //     }
+        // });
+
+
+        fileBtn.addEventListener("change", function() {
+            if (fileBtn.files.length > 0) {
+                customTxt.innerHTML = fileBtn.files[0].name;
             } else {
-                customTxt.innerHTML = "NO file Chosen, Yet.";
+                customTxt.innerHTML = "No file chosen, yet.";
             }
         });
 
         const menuButton = document.getElementById("menuButton");
         const sidebar = document.querySelector(".sidebar");
+
         menuButton.addEventListener("click", () => {
             sidebar.classList.toggle("sidebar-open");
         });
